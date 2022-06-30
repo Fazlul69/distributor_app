@@ -1,0 +1,17 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/purcahseAddRow.js": "/js/purcahseAddRow.js",
+    "/js/salesAddRow.js": "/js/salesAddRow.js",
+    "/js/saledropdown.js": "/js/saledropdown.js",
+    "/js/purchaseDropdown.js": "/js/purchaseDropdown.js",
+    "/js/subtotal.js": "/js/subtotal.js",
+    "/js/total.js": "/js/total.js",
+    "/js/print.js": "/js/print.js",
+    "/js/damage.js": "/js/damage.js",
+    "/js/main.js": "/js/main.js",
+    "/js/product.js": "/js/product.js",
+    "/css/app.css": "/css/app.css",
+    "/css/front.css": "/css/front.css",
+    "/css/view.css": "/css/view.css",
+    "/css/main.css": "/css/main.css"
+}

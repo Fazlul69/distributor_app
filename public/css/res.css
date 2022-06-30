@@ -1,0 +1,103 @@
+@media screen and (max-width: 576px) {
+    .navbar-collapse {
+        left: 0;
+    }
+    .hidden.top-0.right-0.px-6.py-4.sm\:block {
+        display: block;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        color: #000;
+        padding: 3px 6px;
+        float: right;
+    }
+    .d-flex {
+        display: flex !important;
+        float: right;
+    }
+    .text-sm.text-gray-700.dark\:text-gray-500.underline {
+        color: #000;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+        color: #08709f;
+        border: 0px solid #08709f;
+        padding: 3px 5px;
+        border-radius: 0;
+    }
+    .dropdown-menu.subcatEcom.show {
+        width: 50%;
+        float: right;
+    }
+}
+@media screen and (max-width: 768px) {
+    .navbar-collapse {
+        left: 0;
+    }
+    .hidden.top-0.right-0.px-6.py-4.sm\:block {
+        display: block;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        color: #000;
+        padding: 3px 6px;
+        float: right;
+    }
+    .d-flex {
+        display: flex !important;
+        float: right;
+    }
+    .text-sm.text-gray-700.dark\:text-gray-500.underline {
+        color: #000;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+        color: #08709f;
+        border: 0px solid #08709f;
+        padding: 3px 5px;
+        border-radius: 0;
+    }
+    .dropdown-menu.subcatEcom.show {
+        width: 50%;
+        float: right;
+    }
+    
+}
+@media screen and (max-width: 992px) {
+    .navbar-collapse {
+        left: 0;
+    }
+    .hidden.top-0.right-0.px-6.py-4.sm\:block {
+        display: block;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        color: #000;
+        padding: 3px 6px;
+        float: right;
+    }
+    .d-flex {
+        display: flex !important;
+        float: right;
+    }
+    .text-sm.text-gray-700.dark\:text-gray-500.underline {
+        color: #000;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+        color: #08709f;
+        border: 0px solid #08709f;
+        padding: 3px 5px;
+        border-radius: 0;
+    }
+    .dropdown-menu.subcatEcom.show {
+        width: 50%;
+        float: right;
+    }
+
+}
+@media screen and (max-width: 1200px) {
+    .navbar-collapse {
+        left: 0;
+    }
+}

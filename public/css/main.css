@@ -1,0 +1,141 @@
+.main-sidebar {
+  background-color: #f4f6f9;
+}
+
+.main-sidebar .brand-link, .main-sidebar .brand-link:hover {
+  text-decoration: none;
+  color: #000;
+  border-bottom: 0;
+}
+
+.main-sidebar .img-circle {
+  border-radius: 0;
+}
+
+.main-sidebar .elevation-3 {
+  box-shadow: none !important;
+}
+
+.main-sidebar .nav-link {
+  color: #333 !important;
+}
+
+.main-sidebar .gdJue:hover > a {
+  background: #fff !important;
+  border-radius: 0 30px 30px 0 !important;
+  box-shadow: 0 0 3px #ddd;
+}
+
+.main-sidebar .nav-treeview {
+  margin-left: 20px;
+}
+
+.main-sidebar .nav-treeview .nav-item a {
+  color: #999 !important;
+}
+
+.main-sidebar .nav-treeview .nav-item:hover p {
+  color: #000;
+  border-radius: 0;
+  box-shadow: 0;
+}
+
+.main-sidebar svg {
+  width: 18px !important;
+  margin-left: 0.4rem;
+  font-size: 1.2rem;
+  margin-right: 0.4rem;
+  text-align: center;
+  width: 1.6rem;
+}
+
+.content-wrapper {
+  background-color: #fff;
+}
+
+.content-wrapper .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #fff;
+  border-radius: 0.50rem;
+  width: 80%;
+  margin-left: 120px;
+}
+
+.content-wrapper .form-control:focus {
+  box-shadow: none;
+}
+
+.content-wrapper a {
+  text-decoration: none;
+}
+
+.content-wrapper .svgimg {
+  color: #323232;
+}
+
+.content-wrapper .guYhj {
+  border: none;
+  background-color: #fff;
+}
+
+.content-wrapper .done {
+  margin-top: 10px;
+}
+
+.content-wrapper .dashbaord {
+  margin-top: 50px;
+}
+
+.content-wrapper .dashbaord .container .row {
+  text-align: center;
+}
+
+.content-wrapper .dashbaord .container .row a {
+  color: #000;
+  border: 1px solid #3233;
+  padding: 15px 15px;
+  border-radius: 6px;
+}
+
+.content-wrapper .dashbaord .container .row .pur {
+  border-right: 1px solid;
+}
+
+.content-wrapper .dashbaord .container .row .pur p:nth-child(2), .content-wrapper .dashbaord .container .row .pur p:nth-child(3), .content-wrapper .dashbaord .container .row .pur p:nth-child(4) {
+  margin-top: 40px;
+  border: 1px solid rgba(51, 34, 51, 0.133333);
+  padding: 15px 0;
+  border-radius: 6px;
+  background-color: aqua;
+  font-weight: 500;
+}
+
+.content-wrapper .dashbaord .container .row .sal p:nth-child(2), .content-wrapper .dashbaord .container .row .sal p:nth-child(3), .content-wrapper .dashbaord .container .row .sal p:nth-child(4) {
+  margin-top: 40px;
+  border: 1px solid rgba(51, 34, 51, 0.133333);
+  padding: 15px 0;
+  border-radius: 6px;
+  background-color: aqua;
+  font-weight: 500;
+}
+
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  box-shadow: none;
+}
+
+.main-footer {
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.main-footer p {
+  margin: 0;
+}
+

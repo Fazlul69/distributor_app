@@ -1,0 +1,49 @@
+@media screen and (max-width: 576px) {
+    .container, .container-sm {
+        max-width: 100%;
+    }
+    .content-wrapper .card{
+        border: 0;
+        border-radius: 0;
+        box-shadow: 0 0 0px rgba(0,0,0,.125),0 0px 0px rgba(0,0,0,.2);
+    }
+    .invoice_create .container .col {
+        flex: 1 0 17%;
+    }
+    .dow_row .col {
+        margin-left: 25rem !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    .container, .container-sm {
+        max-width: 100%;
+    }
+    .content-wrapper .card{
+        border: 0;
+        border-radius: 0;
+        box-shadow: 0 0 0px rgba(0,0,0,.125),0 0px 0px rgba(0,0,0,.2);
+    }
+    .invoice_create .container .col {
+        flex: 1 0 0%;
+    }
+    .dow_row .col {
+        margin-left: 25rem !important;
+    }
+    
+}
+@media screen and (max-width: 992px) {
+    .container, .container-sm {
+        max-width: 100%;
+    }
+    .content-wrapper .card{
+        border: 0;
+        border-radius: 0;
+        box-shadow: 0 0 0px rgba(0,0,0,.125),0 0px 0px rgba(0,0,0,.2);
+    }
+
+}
+@media screen and (max-width: 1200px) {
+    .container, .container-sm {
+        max-width: 100%;
+    }
+}
