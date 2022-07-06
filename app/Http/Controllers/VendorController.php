@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Vendor;
+use App\Models\Company;
 use Session;
 
 class VendorController extends Controller
@@ -15,7 +15,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        $vendors=Vendor::all();
+        $vendors=Company::all();
         return view('pos.purchase.vendor.index')->with('vendors',$vendors);
     }
 
@@ -46,7 +46,7 @@ class VendorController extends Controller
             'unpaid' => 'nullable',
         ]);
 
-        $vendors = new Vendor();
+        $vendors = new Company();
         
         $vendors->name = $request->name;
         $vendors->email = $request->email;
@@ -88,7 +88,7 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
-        $vendors = Vendor::find($id);
+        $vendors = Company::find($id);
         return view('pos.purchase.vendor.edit',compact('vendors'));
     }
 
@@ -107,7 +107,7 @@ class VendorController extends Controller
             'mobile' => 'nullable',
             'unpaid' => 'nullable',
         ]);
-        $vendors = Vendor::find($id);
+        $vendors = Company::find($id);
         
         $vendors->name = $request->name;
         $vendors->email = $request->email;
@@ -128,7 +128,7 @@ class VendorController extends Controller
      */
     public function destroy($id)
     {
-        Vendor::find($id)->delete();
+        Company::find($id)->delete();
         return redirect()->back();
     }
 }

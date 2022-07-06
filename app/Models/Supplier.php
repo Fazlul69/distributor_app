@@ -19,6 +19,6 @@ class Supplier extends Model
     ];
 
     function vendors(){
-        return $this->belongsTo(Vendor::class, 'vendor_id');
+        return $this->belongsTo(Company::class, 'vendor_id');
     }
 }

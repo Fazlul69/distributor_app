@@ -19,11 +19,9 @@ class Item extends Model
         'mrp'
     ];
     function vendor(){
-
-        return $this->belongsTo(Vendor::class);
+        return $this->belongsTo(Company::class, 'vendor_id');
     }
     function category(){
-
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

@@ -11,6 +11,7 @@ use App\Models\ProductInput;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Salenote;
+use App\Models\Company;
 use Illuminate\Support\Facades\DB;
 
 class ProductSaleController extends Controller
@@ -27,7 +28,7 @@ class ProductSaleController extends Controller
     
     public function create()
     {
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         $suppliers = Supplier::all();
         $customers = Customer::all();
         return view('pos.sale.invoice.create', compact('suppliers', 'customers'))->with('vendors', $vendors);
@@ -93,7 +94,7 @@ class ProductSaleController extends Controller
         $customers = Customer::all();
         $productsales = ProductSale::where([['invoice', '=', $invoice]])->get();
         // dd($productsales);
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         return view('pos.sale.invoice.view',compact('customers', 'vendors'))->with('productsales', $productsales);
     }
 
@@ -107,10 +108,10 @@ class ProductSaleController extends Controller
     {
         $saleVendor=Salenote::distinct()->select('vendor_id')->where('invoice',$request->id)->take(100)->get();
 
-        $data = DB::table('vendors')
-        ->join('salenotes', 'salenotes.vendor_id', '=', 'vendors.id')
+        $data = DB::table('companies')
+        ->join('salenotes', 'salenotes.vendor_id', '=', 'companies.id')
         ->distinct()->select('vendor_id')->where('invoice',$request->id)
-        ->select('vendors.name', 'salenotes.vendor_id')
+        ->select('companies.name', 'salenotes.vendor_id')
         ->get();
         // dd($data);
     	return response()->json($data);
@@ -151,7 +152,7 @@ class ProductSaleController extends Controller
         $productsales = ProductSale::where('product_id','LIKE','%'.$search_text.'%')
                     ->orWhere('date','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        $vendors = Vendor::where('name','LIKE','%'.$search_text.'%')
+        $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
         return view('pos.sale.invoice.index')->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
@@ -165,7 +166,7 @@ class ProductSaleController extends Controller
                     ->paginate(120);
         $productsales = ProductSale::where('invoice','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        $vendors = Vendor::where('name','LIKE','%'.$search_text.'%')
+        $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
         return view('pos.sale.invoice.index')->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
@@ -182,7 +183,7 @@ class ProductSaleController extends Controller
                     ->orWhere('customers.customer_name','LIKE','%'.$search_text.'%')
                     ->orWhere('customers.cus_mobile','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        $vendors = Vendor::where('name','LIKE','%'.$search_text.'%')
+        $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
         $customers = Customer::where('customer_name','LIKE','%'.$search_text.'%')
                     ->orWhere('cus_mobile','LIKE','%'.$search_text.'%')

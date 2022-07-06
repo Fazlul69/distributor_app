@@ -30,7 +30,7 @@ class ProductInput extends Model
 
     function vendor(){
 
-        return $this->belongsTo(Vendor::class);
+        return $this->belongsTo(Company::class);
     }
 
     function Supplier(){

@@ -9,7 +9,6 @@
                 <table class="table table-bordered">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Vendor</th>
                             <th scope="col">Category</th>
                             <th scope="col">Action</th>
@@ -18,8 +17,7 @@
                         <tbody>
                             @foreach($categories as $category)
                             <tr>
-                                <th scope="row">{{$category->id}}</th>
-                                <td>{{$category->vendor->name}}</td>
+                                <td>{{$category->vendor->name??null}}</td>
                                 <td>{{$category->category_name}}</td>
                                 <td>
                                     <a class="svgimg" href="{{route('category.edit',$category->id)}}">

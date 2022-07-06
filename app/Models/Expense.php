@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Expense extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'vendor_id',
-        'category_name'
+        'details',
+        'amount',
+        'date'
     ];
-
-    function vendor(){
-
-        return $this->belongsTo(Company::class, 'vendor_id');
-    }
 }

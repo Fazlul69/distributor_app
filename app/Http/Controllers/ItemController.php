@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Vendor; 
 use App\Models\Item;
+use App\Models\Company;
 use Exception;
 
 class ItemController extends Controller
@@ -17,7 +18,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         $items = Item::all();
         $items = Item::paginate(10);
         return view('pos.item.index', compact('vendors', 'items'));

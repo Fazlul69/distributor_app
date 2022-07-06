@@ -17,6 +17,9 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Ecom\HeaderController;
 use App\Http\Controllers\Ecom\ProductController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MissingController;
+use App\Http\Controllers\ReplaceController;
+use App\Http\Controllers\DailyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,15 +130,59 @@ Route::get('/findSaleDue', [ProductSaleController::class,'findSaleDue']);
 
 // stock
 Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
+Route::get('/stock/details', [StockController::class, 'details'])->name('stock.details');
 Route::get('/stock/search', [StockController::class, 'search'])->name('stock.search');
+Route::get('/stock/details/find', [StockController::class, 'detailsSearch'])->name('stockdetails.search');
+
+
 //damage
 Route::get('/damage', [DamageController::class, 'index'])->name('damage.index');
 Route::post('/damage/store', [DamageController::class, 'store'])->name('damage.store');
-Route::get('/findDamageProduct', [DamageController::class, 'findDamageProduct']);
 Route::get('/damage/edit/{id}',[DamageController::class,'edit'])->name('damage.edit');
 Route::post('/damage/update/{id}',[DamageController::class,'update'])->name('damage.update');
 Route::delete('/damage/delete/{id}',[DamageController::class,'destroy'])->name('damage.delete');
 Route::get('/damage/search', [DamageController::class, 'search'])->name('damage.search');
+
+Route::get('/findDamageProductCat', [DamageController::class, 'findDamageProductCat']);
+Route::get('/findDamageProduct', [DamageController::class, 'findDamageProduct']);
+
+//missing
+Route::get('/missing', [MissingController::class, 'index'])->name('missing.index');
+Route::post('/missing/store', [MissingController::class, 'store'])->name('missing.store');
+Route::get('/missing/edit/{id}',[MissingController::class,'edit'])->name('missing.edit');
+Route::post('/missing/update/{id}',[MissingController::class,'update'])->name('missing.update');
+Route::delete('/missing/delete/{id}',[MissingController::class,'destroy'])->name('missing.delete');
+Route::get('/missing/search', [MissingController::class, 'search'])->name('missing.search');
+
+//replcae
+Route::get('/replace', [ReplaceController::class, 'index'])->name('replace.index');
+Route::post('/replace/store', [ReplaceController::class, 'store'])->name('replace.store');
+Route::get('/replace/edit/{id}',[ReplaceController::class,'edit'])->name('replace.edit');
+Route::post('/replace/update/{id}',[ReplaceController::class,'update'])->name('replace.update');
+Route::delete('/replace/delete/{id}',[ReplaceController::class,'destroy'])->name('replace.delete');
+Route::get('/replace/search', [ReplaceController::class, 'search'])->name('replace.search');
+
+//daily
+Route::get('/collection', [DailyController::class, 'collection'])->name('collection.index');
+Route::post('/collection/store', [DailyController::class, 'collection_store'])->name('collection.store');
+Route::get('/collection/edit/{id}',[DailyController::class,'collection_edit'])->name('collection.edit');
+Route::post('/collection/update/{id}',[DailyController::class,'collection_update'])->name('collection.update');
+Route::delete('/collection/delete/{id}',[DailyController::class,'collection_destroy'])->name('collection.delete');
+Route::get('/collection/search', [DailyController::class, 'collection_search'])->name('collection.search');
+
+Route::get('/expense', [DailyController::class, 'expense'])->name('expense.index');
+Route::post('/expense/store', [DailyController::class, 'expense_store'])->name('expense.store');
+Route::get('/expense/edit/{id}',[DailyController::class,'expense_edit'])->name('expense.edit');
+Route::post('/expense/update/{id}',[DailyController::class,'expense_update'])->name('expense.update');
+Route::delete('/expense/delete/{id}',[DailyController::class,'expense_destroy'])->name('expense.delete');
+Route::get('/expense/search', [DailyController::class, 'expense_search'])->name('expense.search');
+
+Route::get('/note', [DailyController::class, 'note'])->name('note.index');
+Route::post('/note/store', [DailyController::class, 'note_store'])->name('note.store');
+Route::get('/note/edit/{id}',[DailyController::class,'note_edit'])->name('note.edit');
+Route::post('/note/update/{id}',[DailyController::class,'note_update'])->name('note.update');
+Route::delete('/note/delete/{id}',[DailyController::class,'note_destroy'])->name('note.delete');
+Route::get('/note/search', [DailyController::class, 'note_search'])->name('note.search');
 
 //report
 Route::get('/profit', [ReportController::class, 'index'])->name('profit');

@@ -30,7 +30,7 @@ class ProductSale extends Model
         return $this->belongsTo(Item::class, 'product_id');
     }
     function vendor(){
-        return $this->belongsTo(Vendor::class, 'vendor_id');
+        return $this->belongsTo(Company::class, 'vendor_id');
     }
     
 }

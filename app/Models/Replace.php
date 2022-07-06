@@ -5,22 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Damage extends Model
+class Replace extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'shop_name',
+        'vendor_id',
         'product_id',
-        'quantity',
+        'dp',
+        'tp',
+        'shop_back',
+        'return_company',
+        'company_back',
+        'return_shop',
         'date'
     ];
-
-    function vendor(){
-
-        return $this->belongsTo(Company::class);
-    }
-    
-    function item(){
-        return $this->belongsTo(Item::class, 'product_id');
-    }
 }

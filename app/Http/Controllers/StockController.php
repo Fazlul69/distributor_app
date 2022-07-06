@@ -8,6 +8,8 @@ use App\Models\ProductSale;
 use App\Models\Vendor;
 use App\Models\Damage;
 use App\Models\Item;
+use App\Models\Company;
+use App\Models\Missing;
 use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
@@ -20,12 +22,13 @@ class StockController extends Controller
     public function index()
     {
         $productinputs = ProductInput::all();
-        $productinputs = ProductInput::paginate(10);
         $productsales = ProductSale::all();
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         $damages = Damage::all();
         $items = Item::all();
-        return view('pos.stock.index', compact('productinputs', 'productsales', 'vendors', 'damages'))->with('items', $items);
+        $items = Item::paginate(15);
+        $missings = Missing::all();
+        return view('pos.stock.index', compact('productinputs', 'productsales', 'vendors', 'damages', 'missings'))->with('items', $items);
     }
 
     /**
@@ -35,17 +38,16 @@ class StockController extends Controller
      */
     public function search(Request $request){
         $search_text = $_GET['query'];
-        $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%')
-                    ->join('vendors', 'product_inputs.vendor_id', '=', 'vendors.id')
-                    ->orWhere('vendors.name','LIKE','%'.$search_text.'%')
-                    ->paginate(15);
-        $productsales = ProductSale::where('product_id','LIKE','%'.$search_text.'%')
-                    ->paginate(15);
-        $vendors = Vendor::all();
-        $damages = Damage::where('product_id','LIKE','%'.$search_text.'%')
-                    ->paginate(15);
+        $items = Item::where('product_name','LIKE','%'.$search_text.'%')->paginate(15);
+        $productinputs = ProductInput::all();
+        $productsales = ProductSale::all();
+        $vendors = Company::all();
+        $missings = Missing::all();
+        $damages = Damage::all();
         return view('pos.stock.index')->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
+                ->with('items',$items)
+                ->with('missings',$missings)
                 ->with('productsales',$productsales)
                 ->with('damages',$damages);
     }
@@ -108,5 +110,30 @@ class StockController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //stock details
+    public function details()
+    {
+        $productinputs = ProductInput::all();
+        $vendors = Company::all();
+        $items = Item::all();
+        return view('pos.stock.index_two', compact('productinputs', 'vendors', 'items'));
+    }
+
+    public function detailsSearch(Request $request)
+    {
+        $search_text = $_GET['query'];
+        $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%')
+                    ->join('companies', 'product_inputs.vendor_id', '=', 'companies.id')
+                    ->join('items', 'product_inputs.product_id', '=', 'items.product_name')
+                    ->orWhere('companies.name','LIKE','%'.$search_text.'%')
+                    ->orWhere('items.product_name','LIKE','%'.$search_text.'%')
+                    ->paginate(15);
+        $items = Item::all();
+        $vendors = Company::all();
+        return view('pos.stock.index_two')->with('productinputs',$productinputs)
+                ->with('vendors',$vendors)
+                ->with('items',$items);
     }
 }

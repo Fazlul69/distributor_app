@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Vendor;
+use App\Models\Replace;
 use App\Models\Company;
 
-class CategoryController extends Controller
+class ReplaceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $replaces = Replace::all();
         $vendors = Company::all();
-        $categories = Category::all();
-        return view('pos.purchase.category.index', compact('vendors'))->with('categories', $categories);
+        return view('pos.replace.index', compact('replaces', 'vendors'));
     }
 
     /**
@@ -39,14 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'vendor_id' => 'required',
-            'category_name' => 'required',
-        ]);
-        $categories = Category::create($request->all());
-        
-        // Session::flash('success','Data insert successfully');
-        return redirect(route('category.view'));
+        //
     }
 
     /**
@@ -68,8 +60,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::find($id);
-        return view('pos.purchase.category.edit',compact('categories'));
+        //
     }
 
     /**
@@ -81,16 +72,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'category_name' => 'required',
-        ]);
-        $categories = Category::find($id);
-        
-        $categories->category_name = $request->category_name;
-
-        $categories->save();
-        
-        return redirect(route('category.view'));
+        //
     }
 
     /**
@@ -101,7 +83,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
-        return redirect()->back();
+        //
     }
 }

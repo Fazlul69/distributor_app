@@ -8,9 +8,7 @@ use App\Models\Vendor;
 use App\Models\Supplier;
 use App\Models\Category;
 use App\Models\Item;
-use App\Models\Customer;
-use App\Models\ProductSale;
-use Illuminate\Support\Facades\DB;
+use App\Models\Company;
 
 class ProductInController extends Controller
 {
@@ -23,7 +21,7 @@ class ProductInController extends Controller
     {
         $productinputs = ProductInput::all();
         $productinputs = ProductInput::paginate(50);
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         return view('pos.purchase.invoice.index')->with('productinputs', $productinputs)->with('vendors', $vendors);
     }
 
@@ -35,7 +33,7 @@ class ProductInController extends Controller
     public function create()
     {
         $productinputs = ProductInput::all();
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         $suppliers = Supplier::all();
         $categories = Category::all();
         return view('pos.purchase.invoice.create', compact('suppliers','categories','productinputs'))->with('vendors', $vendors);
@@ -76,7 +74,7 @@ class ProductInController extends Controller
 
     public function findVendor()
     {
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         return response()->json($vendors);
     }
 
@@ -120,7 +118,7 @@ class ProductInController extends Controller
      */
     public function show($invoice)
     {
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         $productinputs = ProductInput::where([['invoice', '=', $invoice]])->get();
         // dd($productsales);
         return view('pos.purchase.invoice.view',compact('vendors'))->with('productinputs', $productinputs);
@@ -144,7 +142,7 @@ class ProductInController extends Controller
         $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%')
                     ->orWhere('date','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        $vendors = Vendor::where('name','LIKE','%'.$search_text.'%')
+        $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
         return view('pos.purchase.invoice.index')->with('productinputs',$productinputs)
                 ->with('vendors',$vendors);
@@ -155,7 +153,7 @@ class ProductInController extends Controller
 
         $productinputs = ProductInput::where('invoice','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        $vendors = Vendor::where('name','LIKE','%'.$search_text.'%')
+        $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
         return view('pos.purchase.invoice.index')->with('productinputs',$productinputs)
                 ->with('vendors',$vendors);

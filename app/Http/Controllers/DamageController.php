@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Vendor;
 use App\Models\ProductInput;
 use App\Models\Damage;
 use App\Models\Item;
+use App\Models\Company;
 use Illuminate\Support\Facades\DB;
 
 class DamageController extends Controller
@@ -19,15 +21,20 @@ class DamageController extends Controller
     public function index()
     {
         $damages = Damage::all();
-        $vendors = Vendor::all();
+        $vendors = Company::all();
         $productinputs = ProductInput::all();
         return view('pos.damage.index', compact('damages', 'vendors', 'productinputs'));
     }
 
+    public function findDamageProductCat(Request $request)
+    {
+        $items=Category::select('category_name', 'id')->where('vendor_id',$request->id)->take(100)->get();
+    	return response()->json($items);
+    }
     public function findDamageProduct(Request $request)
     {
-        $productinputs=Item::select('product_name', 'id')->where('vendor_id',$request->id)->take(100)->get();
-    	return response()->json($productinputs);
+        $data=Item::select('product_name', 'id')->where('category_id',$request->id)->take(100)->get();
+    	return response()->json($data);
     }
     /**
      * Show the form for creating a new resource.
@@ -55,18 +62,6 @@ class DamageController extends Controller
         Damage::create($request->all());
         
         return redirect(route('damage.index'));
-    }
-
-    public function search(Request $request){
-        $search_text = $_GET['query'];
-        $damages = Damage::all();
-        $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%');
-        $data = DB::table('damages')
-                ->join('product_inputs', 'product_inputs.product_name', '=', 'damages.product_id')
-                ->where('product_name','LIKE','%'.$search_text.'%')
-                ->get();
-        $vendors = Vendor::all();
-        return view('pos.damage.index', compact('vendors'))->with('damages',$damages)->with('data', $data);
     }
     /**
      * Display the specified resource.
@@ -125,5 +120,18 @@ class DamageController extends Controller
     {
         Damage::find($id)->delete();
         return redirect()->back();
+    }
+
+    public function search(Request $request){
+        $search_text = $_GET['query'];
+        $damages = DB::table('damages')
+                ->join('items', 'items.id', '=', 'damages.product_id')
+                ->where('items.product_name','LIKE','%'.$search_text.'%')
+                ->get();
+        $productinputs = ProductInput::all();
+        
+        $vendors = Company::all();
+        $items = Item::all();
+        return view('pos.damage.index', compact('vendors', 'damages', 'items'));
     }
 }

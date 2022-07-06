@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Vendor;
 use App\Models\Company;
+use App\Models\Missing;
+use App\Models\ProductInput;
+use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class MissingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class CategoryController extends Controller
     public function index()
     {
         $vendors = Company::all();
-        $categories = Category::all();
-        return view('pos.purchase.category.index', compact('vendors'))->with('categories', $categories);
+        $missings = Missing::all();
+        return view('pos.missing.index', compact('vendors', 'missings'));
     }
 
     /**
@@ -40,13 +41,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'vendor_id' => 'required',
-            'category_name' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'required',
+            'date' => 'required'
         ]);
-        $categories = Category::create($request->all());
+        Missing::create($request->all());
         
-        // Session::flash('success','Data insert successfully');
-        return redirect(route('category.view'));
+        return redirect(route('missing.index'));
     }
 
     /**
@@ -68,8 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::find($id);
-        return view('pos.purchase.category.edit',compact('categories'));
+        $missings = Missing::find($id);
+        return view('pos.missing.edit',compact('missings'));
     }
 
     /**
@@ -82,15 +83,17 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'category_name' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'nullable',
         ]);
-        $categories = Category::find($id);
+        $missings = Missing::find($id);
         
-        $categories->category_name = $request->category_name;
+        $missings->product_id = $request->product_id;
+        $missings->quantity = $request->quantity;
 
-        $categories->save();
+        $missings->save();
         
-        return redirect(route('category.view'));
+        return redirect(route('missing.index'));
     }
 
     /**
@@ -101,7 +104,18 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
+        Missing::find($id)->delete();
         return redirect()->back();
+    }
+
+    public function search(Request $request){
+        $search_text = $_GET['query'];
+        $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%');
+        $data = DB::table('damages')
+                ->join('product_inputs', 'product_inputs.product_name', '=', 'damages.product_id')
+                ->where('product_name','LIKE','%'.$search_text.'%')
+                ->get();
+        $vendors = Company::all();
+        return view('pos.damage.index', compact('vendors'))->with('data', $data);
     }
 }

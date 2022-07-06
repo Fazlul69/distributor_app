@@ -14,7 +14,9 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
-            <div class="col"></div>
+            <div class="col">
+                <a href="{{route('stock.details')}}">Details</a>
+            </div>
         </div>
         <div class="">
             <div class="card-body des">
@@ -26,6 +28,7 @@
                     <th scope="col">Purchase</th>
                     <th scope="col">Sale</th>
                     <th scope="col">Damage</th>
+                    <th scope="col">Missing</th>
                     <th scope="col">Stock</th>
                     </tr>
                 </thead>
@@ -38,6 +41,7 @@
                             $allven = $vendors->where('id', $item->vendor_id);
                             $sale_product = $productsales->where('product_id', $item->id)->sum('quantity');
                             $dmg = $damages->where('product_id', $item->id)->sum('quantity');
+                            $miss = $missings->where('product_id', $item->id)->sum('quantity');
                             $p_quantity = $productinputs->where('product_id', $item->id)->sum('quantity');
                         @endphp
                         @foreach($allven as $ven)
@@ -47,7 +51,8 @@
                         <td>{{$p_quantity}}</td>
                         <td>{{$sale_product}}</td>
                         <td>{{$dmg}}</td>
-                        <td>{{$p_quantity - $sale_product - $dmg}}</td>
+                        <td>{{$miss}}</td>
+                        <td>{{$p_quantity - $sale_product - $dmg - $miss}}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -55,7 +60,7 @@
             </div>
         </div>
         <div class="pagination">
-            <span>{{$productinputs->links()}}</span>
+            <span>{{$items->links()}}</span>
         </div> 
     </div>
 
