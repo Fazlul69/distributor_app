@@ -25,8 +25,7 @@
                 <thead>
                     <tr>
                     <th scope="col">Date</th>
-                    <th scope="col">Collector Name</th>
-                    <th scope="col">Customer Name</th>
+                    <th scope="col">Details</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -34,7 +33,9 @@
                 <tbody>
                 @foreach($notes as $note)
                     <tr>
-                        
+                    <td>{{date('d-M-y', strtotime($note->date))}}</td>
+                        <td>{{$note->details}}</td>
+                        <td>{{$note->amount}}</td>
                         <td>
                         <a class="svgimg" href="{{route('note.edit',$note->id)}}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
@@ -78,17 +79,12 @@
                 <form action="{{route('note.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date">
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="dp" class="form-label">DP</label>
-                        <input type="text" class="form-control" id="dp" name="dp" >
+                        <label for="details" class="form-label">Details</label>
+                        <input type="text" class="form-control" id="details" name="details" >
                     </div>
                     <div class="mb-3">
-                        <label for="tp" class="form-label">TP</label>
-                        <input type="text" class="form-control" id="tp" name="tp" >
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="text" class="form-control" id="amount" name="amount" >
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Date</label>

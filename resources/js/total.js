@@ -9,4 +9,4 @@
 
 $(document).ready(function() {
     $('.p_bill').select2();
-  });
+});

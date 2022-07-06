@@ -30,8 +30,15 @@
                                     </select>
                                 </div>
                                 <div class="col">
+                                    @php
+                                        $heee = DB::table('product_inputs')->latest('id')->first();
+                                    @endphp
                                     <label for="invoice" class="form-label">Invoice No</label>
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]" placeholder="101" required>
+                                    @if(empty($heee->invoice))
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="101" placeholder="S101" required>
+                                    @else
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="{{$heee->invoice+1}}" placeholder="S101" required>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="date" class="form-label">date</label>

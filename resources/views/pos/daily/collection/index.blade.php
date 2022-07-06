@@ -34,7 +34,10 @@
                 <tbody>
                 @foreach($collections as $collection)
                     <tr>
-                        
+                        <td>{{date('d-M-y', strtotime($collection->date))}}</td>
+                        <td>{{$collection->stuff_name}}</td>
+                        <td>{{$collection->customer->shop}}</td>
+                        <td>{{$collection->amount}}</td>
                         <td>
                         <a class="svgimg" href="{{route('collection.edit',$collection->id)}}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
@@ -75,7 +78,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('replace.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('collection.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div class="mb-3">
                         <label for="date" class="form-label">Date</label>
@@ -83,16 +86,21 @@
                     </div>
                     
                     <div class="mb-3">
-                        <label for="dp" class="form-label">DP</label>
-                        <input type="text" class="form-control" id="dp" name="dp" >
+                        <label for="stuff_name" class="form-label">Collector Name</label>
+                        <input type="text" class="form-control" id="stuff_name" name="stuff_name" >
                     </div>
                     <div class="mb-3">
-                        <label for="tp" class="form-label">TP</label>
-                        <input type="text" class="form-control" id="tp" name="tp" >
+                        <label for="customer_id" class="form-label">Shop Name</label>
+                        <select class="form-control " name="customer_id">
+                            <option value="">Select a Customer</option>
+                            @foreach($customers as $customer)
+                            <option value="{{$customer->id}}">{{$customer->shop}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="text" class="form-control" id="amount" name="amount" >
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

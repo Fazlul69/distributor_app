@@ -16,13 +16,20 @@
                                     <select class="form-control single" name="customer_id[]">
                                             <option value="">Select a Customer</option>
                                                 @foreach($customers as $customer)
-                                                    <option value="{{$customer->id}}">{{$customer->cus_mobile}}</option>
+                                                    <option value="{{$customer->id}}">{{$customer->shop}}</option>
                                                 @endforeach
                                         </select>
                                 </div>
                                 <div class="col">
+                                    @php
+                                        $heee = DB::table('product_sales')->latest('id')->first();
+                                    @endphp
                                     <label for="invoice" class="form-label">Invoice No</label>
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]" placeholder="S101" required>
+                                    @if(empty($heee->invoice))
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="101" placeholder="S101" required>
+                                    @else
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="{{$heee->invoice+1}}" placeholder="S101" required>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="date" class="form-label">date</label>
