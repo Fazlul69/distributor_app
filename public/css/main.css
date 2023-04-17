@@ -53,6 +53,11 @@
   background-color: #fff;
 }
 
+.content-wrapper .btn-check:focus + .btn, .content-wrapper .btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0rem rgba(13, 110, 253, 0.25);
+}
+
 .content-wrapper .card {
   position: relative;
   display: flex;

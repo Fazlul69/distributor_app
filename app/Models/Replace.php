@@ -11,14 +11,18 @@ class Replace extends Model
 
     protected $fillable = [
         'shop_name',
+        'invoice',
         'vendor_id',
         'product_id',
-        'dp',
-        'tp',
-        'shop_back',
-        'return_company',
-        'company_back',
-        'return_shop',
+        'sales_return',
+        'amount',
         'date'
     ];
+
+    function item(){
+        return $this->belongsTo(Item::class, 'product_id');
+    }
+    function vendor(){
+        return $this->belongsTo(Company::class, 'vendor_id');
+    }
 }

@@ -12,6 +12,7 @@ class Collection extends Model
     protected $fillable = [
         'stuff_name',
         'customer_id',
+        'sales_invoice',
         'amount',
         'date'
     ];

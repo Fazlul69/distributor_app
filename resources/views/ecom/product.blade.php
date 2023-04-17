@@ -25,6 +25,7 @@
                             <th>Action</th>
                             </tr>
                         </thead>
+                        @if(isset($products))
                         <tbody>
                             @foreach($products as $item)
                             <tr>
@@ -63,6 +64,7 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        @endif
                     </table>
                 </div>
             </div>

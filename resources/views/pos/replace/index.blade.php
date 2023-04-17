@@ -26,30 +26,24 @@
                     <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Shop</th>
+                    <th scope="col">Invoice</th>
                     <th scope="col">Vendor</th>
                     <th scope="col">Item Name</th>
-                    <th scope="col">DP</th>
-                    <th scope="col">TP</th>
-                    <th scope="col">Shop Back</th>
-                    <th scope="col">Return to Company</th>
-                    <th scope="col">Company Back</th>
-                    <th scope="col">Return to Shop</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Amount</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($replaces as $replace)
                     <tr>
-                        <td>{{$replace->date}}</td>
+                        <td>{{date('d-M-y', strtotime($replace->date))}}</td>
                         <td>{{$replace->shop_name}}</td>
-                        <td>{{$replace->vendor_id}}</td>
-                        <td>{{$replace->product_id}}</td>
-                        <td>{{$replace->dp}}</td>
-                        <td>{{$replace->tp}}</td>
-                        <td>{{$replace->shop_back}}</td>
-                        <td>{{$replace->return_company}}</td>
-                        <td>{{$replace->company_back}}</td>
-                        <td>{{$replace->return_shop}}</td>
+                        <td>{{$replace->invoice}}</td>
+                        <td>{{$replace->vendor->name}}</td>
+                        <td>{{$replace->item->product_name}}</td>
+                        <td>{{$replace->sales_return}}</td>
+                        <td>{{$replace->amount}}</td>
                         <td>
                         <a class="svgimg" href="{{route('replace.edit',$replace->id)}}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
@@ -97,6 +91,14 @@
                         <input type="date" class="form-control" id="date" name="date">
                     </div>
                     <div class="mb-3">
+                        <label for="invoice" class="form-label">Invoice No</label>
+                        <input type="text" class="form-control" id="invoice" name="invoice">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Shop Name</label>
+                        <input type="text" class="form-control" id="date" name="shop_name">
+                    </div>
+                    <div class="mb-3">
                         <label for="vendor_id" class="form-label">Vendor</label>
                         <select class="form-control damageVendor" name="vendor_id">
                             <option value="">Select a Vendor</option>
@@ -118,16 +120,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="dp" class="form-label">DP</label>
-                        <input type="text" class="form-control" id="dp" name="dp" >
+                        <label for="sales_return" class="form-label">Quantity</label>
+                        <input type="text" class="form-control" id="sales_return" name="sales_return" >
                     </div>
                     <div class="mb-3">
-                        <label for="tp" class="form-label">TP</label>
-                        <input type="text" class="form-control" id="tp" name="tp" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="text" class="form-control" id="amount" name="amount" >
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

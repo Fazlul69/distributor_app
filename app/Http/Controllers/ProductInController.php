@@ -53,7 +53,7 @@ class ProductInController extends Controller
             $input = new ProductInput();
             $input->product_id = $product_id;
             $input->invoice = $request->invoice[0];
-            $input->supplier_id = $request->supplier_id[0];
+            $input->supplier_name = $request->supplier_name[0];
             $input->category_id = $request->category_id[$key];
             $input->company_price = $request->company_price[$key];
             $input->discount_price = $request->discount_price[$key];
@@ -186,6 +186,6 @@ class ProductInController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect(route('pinput.view'));
     }
 }

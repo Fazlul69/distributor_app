@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProductInput;
 use App\Models\ProductSale;
+use App\Models\Collection;
+use App\Models\Expense;
+use App\Models\Replace;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
@@ -15,12 +19,52 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $productinputs = ProductInput::select('grand_total')->where()
+        $expenses = Expense::all();
+        $collections = Collection::all();
         $productinputs = ProductInput::all();
         $productsales = ProductSale::all();
-        return view('pos.dashboard', compact('productinputs','productsales'));
+        return view('pos.dashboard', compact('productinputs','productsales','collections','expenses'));
     }
 
+    public function getdata(Request $request)
+    {
+        $data = ProductInput::distinct()->select('date','invoice','grand_total')
+                ->whereYear('date', $request->year)
+                ->whereMonth('date', $request->month)
+                // ->where('date',$request->id)
+                ->get();
+    	return response()->json($data);
+    }
+    
+    public function getcollection(Request $request)
+    {
+        $data = Collection::distinct()->select('date','sales_invoice','amount')
+                ->whereYear('date', $request->year)
+                ->whereMonth('date', $request->month)
+                // ->where('date',$request->id)
+                ->get();
+    	return response()->json($data);
+    }
+
+    public function getexpense(Request $request)
+    {
+        $data = Expense::distinct()->select('date','details','amount')
+                ->whereYear('date', $request->year)
+                ->whereMonth('date', $request->month)
+                // ->where('date',$request->id)
+                ->get();
+    	return response()->json($data);
+    }
+
+    public function getreplace(Request $request)
+    {
+        $data = Replace::distinct()->select('date','amount')
+                ->whereYear('date', $request->year)
+                ->whereMonth('date', $request->month)
+                // ->where('date',$request->id)
+                ->get();
+    	return response()->json($data);
+    }
     /**
      * Show the form for creating a new resource.
      *

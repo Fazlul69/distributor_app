@@ -87,7 +87,6 @@ $(document).ready(function(){
 
           //stock
           var pur_pro = a.find('.purchase_quality').val();
-          console.log("p quantity: "+pur_pro);
           var tot = parseInt(pur_pro) - parseInt(data);
           a.find('.p_stock').val(tot);
         },
@@ -122,7 +121,6 @@ $(document).ready(function(){
     // for view 
     $(document).on('change', '.customerSelectFromSale', function(){
       var cus_id=$(this).val();
-      console.log("a :"+ cus_id);
       var div=$(this).parent().parent();
             var op=" ";
 
@@ -146,61 +144,101 @@ $(document).ready(function(){
 
     $(document).on('change', '.saleInvoice', function(){
       var invoice_id=$(this).val();
-      console.log("b :"+ invoice_id);
-      var div=$(this).parent().parent();
+      var a=$(this).parent().parent();
       var op=" ";
 
       $.ajax({
         type:'get',
-        url: '/findVendorFromSale',
+        url: '/findSaleDue',
         data:{'id':invoice_id},
         success: function(data){
-         console.log("gg:"+data);
-          op+='<option value="0" selected disabled>Choose Vendor</option>';
-                    for(var i=0;i<data.length;i++){
-                      op+='<option value="'+data[i].vendor_id+'">'+data[i].name+'</option>';
-          }
-
-          div.find('.saleVendor').html(" ");
-          div.find('.saleVendor').append(op);
-
+          a.find('.saleDue').val(data.grand_total)
         },
 
       });
     });
-
-    $(document).on('change', '.saleVendor', function(){
-      var vendor_id=$(this).val();
-      console.log("c :"+ vendor_id);
+    $(document).on('change', '.saleInvoice', function(){
+      var invoice_id=$(this).val();
+      console.log(invoice_id);
       var a=$(this).parent().parent();
+      var op=" ";
 
       $.ajax({
         type:'get',
-        url: '/findSaleDue',
-        data:{'id':vendor_id},
+        url: '/findSaleDate',
+        data:{'id':invoice_id},
         success: function(data){
-          console.log("dd :"+ data);
-          a.find('.saleDue').val(data.due)
+          a.find('.saleDate').val(data.date);
+        },
+
+      });
+    });
+    $(document).on('change', '.saleInvoice', function(){
+      var invoice_id=$(this).val();
+      console.log(invoice_id);
+      var a=$(this).parent().parent();
+      var op=" ";
+
+      $.ajax({
+        type:'get',
+        url: '/findCollection',
+        data:{'id':invoice_id},
+        success: function(data){
+          console.log("coll: "+ data);
+          a.find('.collections').val(data.amount);
         },
 
       });
     });
 
-    // add in history
+    // $(document).on('change', '.saleVendor', function(){
+    //   var vendor_id=$(this).val();
+    //   var a=$(this).parent().parent();
+
+    //   $.ajax({
+    //     type:'get',
+    //     url: '/findSaleDue',
+    //     data:{'id':vendor_id},
+    //     success: function(data){
+    //       a.find('.saleDue').val(data.due)
+    //     },
+
+    //   });
+    // });
+
+    // add in history\
+    var formatDate = function(date) {
+      return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+    }
     var alldue = [];
     $(document).on('click', '.addHistory', function(){
       var vendor = $('.saleVendor option:selected').text();
       var invoice = $('.saleInvoice').val();
+      var timestamp = $('.saleDate').val();
+      var date = new Date(timestamp);
       var due = $('.saleDue').val();
-
-      $('.queryTable tbody').append('<tr><td>'+vendor+'</td><td>'+invoice+'</td><td class="his_due">'+due+'</td></tr>');
+      var collections = $('.collections').val();
       
-      alldue.push($('.saleDue').val());
+      // $('.queryTable tbody').append('<tr><td>'+date+'</td><td>'+invoice+'</td><td class="his_due">'+due+'</td><td class="collect">'+collections+'</td><td class="closeBalance"></td></tr>');
+      
+      if(collections != 0){
+        var ddf = parseFloat(due)-parseFloat(collections);
+        $('.queryTable tbody').append('<tr class="text-center"><td>'+formatDate(date)+'</td><td>'+invoice+'</td><td class="his_due">'+due+'</td><td class="collect">'+collections+'</td><td class="closeBalance">'+ddf+'</td></tr>');
+        alldue.push(ddf);
+      }
+      else{
+        $('.queryTable tbody').append('<tr class="text-center"><td>'+formatDate(date)+'</td><td>'+invoice+'</td><td class="his_due">'+due+'</td><td class="collect">'+collections+'</td><td class="closeBalance">'+due+'</td></tr>');
+        alldue.push(due);
+      }
+
+
+
+      
       var sum = 0.00;
       $.each(alldue,function(){sum+=parseFloat(this) || 0;});
-      $(".dShyt").append('<p class="totaldueinsale">'+'Total Due: ' +sum+'</p>');
+      $(".dShyt").append('<p class="totaldueinsale">'+'Total: ' +sum+'</p>');
       $(".totaldueinsale").empty();
-      $(".dShyt").append('<p class="totaldueinsale">'+'Total Due: ' +sum+'</p>');
+      $(".dShyt").append('<p class="totaldueinsale">'+'Total: ' +sum+'</p>');
       console.log(sum);
     });
 

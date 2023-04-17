@@ -32,5 +32,8 @@ class ProductSale extends Model
     function vendor(){
         return $this->belongsTo(Company::class, 'vendor_id');
     }
+    function replace(){
+        return $this->belongsTo(Replace::class);
+    }
     
 }

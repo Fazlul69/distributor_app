@@ -1,0 +1,255 @@
+body {
+  background-color: #f2f2f2;
+}
+
+.navbar-brand img {
+  height: 70px;
+}
+
+.navbar-collapse {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  left: -22rem;
+}
+
+.nav-item.dropdown {
+  margin-right: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.55);
+  padding: 3px 20px;
+}
+
+.dropdown-menu.subcatEcom.show {
+  margin-left: -40px;
+}
+
+.dropdown-menu li a {
+  text-align: center;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #fff;
+  background-color: #08709f;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: #08709f;
+  border: 1px solid #08709f;
+  padding: 3px 20px;
+  border-radius: 16px;
+}
+
+.dropdown-menu[data-bs-popper] {
+  margin-top: 2rem;
+}
+
+.up_level {
+  position: relative;
+  top: -19rem;
+  left: 11rem;
+  color: #fff;
+}
+
+.up_level p {
+  margin: 0;
+  padding: 0;
+}
+
+.up_level p:nth-child(3) {
+  margin-left: 6rem;
+}
+
+.up_level h5 {
+  margin-left: 45px;
+  margin-top: 10px;
+}
+
+.khYus {
+  margin-top: -90px;
+}
+
+.khYus .container .col-md-2 {
+  display: contents;
+}
+
+.khYus .container h3 {
+  margin-bottom: 30px;
+}
+
+.khYus .container .row .card {
+  margin-bottom: 10px;
+  margin-left: 25px;
+}
+
+.khYus .container .row .card .card-body img {
+  height: 250px;
+  width: 200px;
+}
+
+.khYus .container .row .card .card-body p {
+  padding: 0;
+  margin: 0;
+}
+
+.khYus .container .row .card .card-body h5 {
+  color: #f14366;
+  font-weight: 900;
+}
+
+.khYus .container .row .card .card-body a {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #716b6b4d;
+  border-radius: 10px;
+  width: 50%;
+  margin-left: 50px;
+}
+
+.khYus .container .row .card .card-body a:hover {
+  color: #fff;
+  background-color: #458a3f;
+  border: 1px solid #6c686c33 !important;
+}
+
+.p_view {
+  margin-top: 30px;
+}
+
+.p_view .container .row img {
+  width: auto;
+  height: 364px;
+}
+
+.p_view .container .row p {
+  padding: 0;
+  margin: 0;
+  width: 400px;
+}
+
+.p_view .container .row .mon {
+  font-weight: 900;
+  color: #db2020;
+}
+
+.cat_view {
+  margin-top: 50px;
+}
+
+.cat_view .container .col-md-2 {
+  display: contents;
+}
+
+.cat_view .container h3 {
+  margin-bottom: 30px;
+}
+
+.cat_view .container .row .card {
+  margin-bottom: 10px;
+  margin-left: 25px;
+}
+
+.cat_view .container .row .card .card-body img {
+  height: 250px;
+  width: 200px;
+}
+
+.cat_view .container .row .card .card-body p {
+  padding: 0;
+  margin: 0;
+}
+
+.cat_view .container .row .card .card-body h5 {
+  color: #f14366;
+  font-weight: 900;
+}
+
+.cat_view .container .row .card .card-body a {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #716b6b4d;
+  border-radius: 10px;
+  width: 50%;
+  margin-left: 50px;
+}
+
+.cat_view .container .row .card .card-body a:hover {
+  color: #fff;
+  background-color: #458a3f;
+  border: 1px solid #6c686c33 !important;
+}
+
+.foo {
+  background-color: #222;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.foo .container .row {
+  padding-bottom: 20px;
+}
+
+.foo .container .row .add p {
+  margin: 0;
+  padding: 0;
+}
+
+.foo .container .row .social a {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+}
+
+.foo .container .row .social svg {
+  width: 40px;
+  height: 40px;
+}
+
+.foo .container .row h4 {
+  margin-top: 20px;
+}
+
+.copy {
+  background-color: #222;
+  color: #fff;
+}
+
+.copy p {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #797575;
+  font-size: 16px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+/*# sourceMappingURL=front.css.map */

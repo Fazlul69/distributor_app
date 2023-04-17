@@ -14,7 +14,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="due" class="form-label">Due</label>
-                            <input type="text" class="form-control" id="due" name="due" value="{{$productsales->due}}">
+                            <input type="text" class="form-control"  name="due" value="{{$productsales->due}}">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

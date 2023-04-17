@@ -38,7 +38,18 @@ class ReplaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'shop_name' => 'required',
+            'invoice' => 'required',
+            'vendor_id' => 'required',
+            'product_id' => 'required',
+            'sales_return' => 'required',
+            'amount' => 'required',
+            'date' => 'required',
+        ]);
+        Replace::create($request->all());
+        
+        return redirect(route('replace.index'));
     }
 
     /**
@@ -49,7 +60,7 @@ class ReplaceController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -60,7 +71,8 @@ class ReplaceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $replaces = Replace::find($id);
+        return view('pos.replace.edit',compact('replaces'));
     }
 
     /**
@@ -72,7 +84,18 @@ class ReplaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'sales_return' => 'nullable',
+            'amount' => 'nullable',
+        ]);
+        $replaces = Replace::find($id);
+        
+        $replaces->sales_return = $request->sales_return;
+        $replaces->amount = $request->amount;
+
+        $replaces->save();
+        
+        return redirect(route('replace.index'));
     }
 
     /**
@@ -83,6 +106,7 @@ class ReplaceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Replace::find($id)->delete();
+        return redirect()->back();
     }
 }

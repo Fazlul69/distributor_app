@@ -41,6 +41,10 @@
     
 }
 .content-wrapper {
+    .btn-check:focus + .btn, .btn:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgba(13,110,253,.25);
+    }
     background-color: #fff;
     .card {
         position: relative;

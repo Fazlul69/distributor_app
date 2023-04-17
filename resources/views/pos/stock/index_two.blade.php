@@ -5,7 +5,7 @@
 <div class="stock_details">
     <div class="container">
         <div class="row">
-            <div class="col"> << <a href="{{route('stock.index')}}">Back</a></div>
+            <div class="col"> << <a href="{{route('stock.index')}}">Back</a> / <a href="{{route('stock.details')}}">Stock Details</a></div>
             <div class="col"></div>
         </div>
         <div class="row">
@@ -16,6 +16,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
+            <div class="col"></div>
         </div>
         <div class="lscYr">
             <table class="table table-bordered">
@@ -54,4 +55,10 @@
     </div>
 </div>
 
+<style>
+    a, a:hover{color: #323232;}
+    .form-inline.search {
+        margin-bottom: 20px;
+    }
+</style>
 @endsection

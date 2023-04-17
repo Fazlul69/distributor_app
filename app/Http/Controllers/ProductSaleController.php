@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProductSale;
 use App\Models\Supplier;
-use App\Models\Vendor;
 use App\Models\Customer;
 use App\Models\ProductInput;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Salenote;
 use App\Models\Company;
+use App\Models\Collection;
+use App\Models\Replace;
 use Illuminate\Support\Facades\DB;
 
 class ProductSaleController extends Controller
@@ -20,9 +21,11 @@ class ProductSaleController extends Controller
     public function index()
     {
         // $productsales = ProductSale::all();
+        $collections = Collection::all();
+        $replaces = Replace::all();
         $productsales = ProductSale::distinct()->orderBy('invoice')->get();
         $productsales = ProductSale::paginate(50);
-        return view('pos.sale.invoice.index')->with('productsales', $productsales);
+        return view('pos.sale.invoice.index', compact('replaces','collections'))->with('productsales', $productsales);
     }
 
     
@@ -97,11 +100,20 @@ class ProductSaleController extends Controller
         $vendors = Company::all();
         return view('pos.sale.invoice.view',compact('customers', 'vendors'))->with('productsales', $productsales);
     }
+    public function show_two($invoice)
+    {
+        $customers = Customer::all();
+        $productsales = ProductSale::where([['invoice', '=', $invoice]])->get();
+        // dd($productsales);
+        $vendors = Company::all();
+        return view('pos.sale.invoice.view_two',compact('customers', 'vendors'))->with('productsales', $productsales);
+    }
+    
 
     public function findCustomerInView(Request $request)
     {
-        $saleInvoice=Salenote::distinct()->select('invoice')->where('customer_id',$request->id)->take(100)->get();
-    	return response()->json($saleInvoice);
+        $saleInvoice=ProductSale::distinct()->select('invoice')->where('customer_id',$request->id)->take(100)->get();
+        return response()->json($saleInvoice);
     }
 
     public function findVendorFromSale(Request $request)
@@ -109,9 +121,9 @@ class ProductSaleController extends Controller
         $saleVendor=Salenote::distinct()->select('vendor_id')->where('invoice',$request->id)->take(100)->get();
 
         $data = DB::table('companies')
-        ->join('salenotes', 'salenotes.vendor_id', '=', 'companies.id')
+        ->join('product_sales', 'product_sales.vendor_id', '=', 'companies.id')
         ->distinct()->select('vendor_id')->where('invoice',$request->id)
-        ->select('companies.name', 'salenotes.vendor_id')
+        ->select('companies.name', 'product_sales.vendor_id')
         ->get();
         // dd($data);
     	return response()->json($data);
@@ -119,8 +131,20 @@ class ProductSaleController extends Controller
 
     public function findSaleDue(Request $request)
     {
-        $due=Salenote::distinct()->select('due')->where('vendor_id',$request->id)->first();
+        $due=ProductSale::distinct()->select('grand_total')->where('invoice',$request->id)->first();
     	return response()->json($due);
+    }
+    public function findSaleDate(Request $request)
+    {
+        $data = ProductSale::distinct()->select('date')->where('invoice',$request->id)->first();
+    	return response()->json($data);
+    }
+    
+    public function findCollection(Request $request)
+    {
+        $data=Collection::distinct()->select('amount')->where('sales_invoice',$request->id)->first();
+
+    	return response()->json($data);
     }
 
     public function edit($id)
@@ -195,7 +219,7 @@ class ProductSaleController extends Controller
 
     public function destroy($id)
     {
-        //
+        return redirect(route('sales.index'));
     }
 
     // Note

@@ -32,6 +32,7 @@ class DailyController extends Controller
             'stuff_name' => 'required',
             'customer_id' => 'required',
             'amount' => 'required',
+            'sales_invoice' => 'required',
             'date' => 'required'
         ]);
         Collection::create($request->all());

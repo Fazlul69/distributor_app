@@ -71,7 +71,7 @@ class HeaderController extends Controller
 
     public function categoryshow(Request $request)
     {
-        $products = Product::where('subcategory_id', $request->id)->take(100)->get();;
+        $products = Product::where('subcategory_id', $request->id)->take(100)->get();
         $ecomcategories = EcomCategory::all();
         return view('layouts.category_wise_productview', compact('products', 'ecomcategories'));
     }

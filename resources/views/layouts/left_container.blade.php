@@ -247,7 +247,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('ecom_invoice.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Invoice</p>
                 </a>

@@ -10,6 +10,7 @@ use App\Models\Damage;
 use App\Models\Item;
 use App\Models\Company;
 use App\Models\Missing;
+use App\Models\Replace;
 use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
@@ -28,7 +29,8 @@ class StockController extends Controller
         $items = Item::all();
         $items = Item::paginate(15);
         $missings = Missing::all();
-        return view('pos.stock.index', compact('productinputs', 'productsales', 'vendors', 'damages', 'missings'))->with('items', $items);
+        $replaces = Replace::all();
+        return view('pos.stock.index', compact('productinputs', 'productsales', 'vendors', 'damages', 'missings','replaces'))->with('items', $items);
     }
 
     /**
@@ -38,18 +40,21 @@ class StockController extends Controller
      */
     public function search(Request $request){
         $search_text = $_GET['query'];
-        $items = Item::where('product_name','LIKE','%'.$search_text.'%')->paginate(15);
+        $items = Item::where('product_name','LIKE','%'.$search_text.'%')
+        ->paginate(15);
         $productinputs = ProductInput::all();
         $productsales = ProductSale::all();
         $vendors = Company::all();
         $missings = Missing::all();
         $damages = Damage::all();
+        $replaces = Replace::all();
         return view('pos.stock.index')->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
                 ->with('items',$items)
                 ->with('missings',$missings)
                 ->with('productsales',$productsales)
-                ->with('damages',$damages);
+                ->with('damages',$damages)
+                ->with('replaces', $replaces);
     }
     public function create()
     {

@@ -20,6 +20,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MissingController;
 use App\Http\Controllers\ReplaceController;
 use App\Http\Controllers\DailyController;
+use App\Http\Controllers\Ecom\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,10 @@ Route::get('logout', [AuthController::class,'logout'])->name('logout');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard.view');
+Route::get('/getdata', [DashboardController::class, 'getdata']);
+Route::get('/getcollection', [DashboardController::class, 'getcollection']);
+Route::get('/getexpense', [DashboardController::class, 'getexpense']);
+Route::get('/getreplace', [DashboardController::class, 'getreplace']);
 
 //vendor
 Route::get('/vendors', [VendorController::class,'index'])->name('vendor.view');
@@ -108,6 +113,7 @@ Route::get('/sale/edit/{id}',[ProductSaleController::class,'edit'])->name('sales
 Route::post('/sale/update/{id}',[ProductSaleController::class,'update'])->name('sales.update');
 Route::delete('/sale/delete/{id}',[ProductSaleController::class,'destroy'])->name('sales.delete');
 Route::get('/sale/view/{invoice}',[ProductSaleController::class,'show'])->name('sales.view');
+Route::get('/sale/view-two/{invoice}',[ProductSaleController::class,'show_two'])->name('sales.view_two');
 
 //note
 Route::post('/notestore', [ProductSaleController::class, 'notestore']);
@@ -127,6 +133,8 @@ Route::get('/saleProduct', [ProductSaleController::class,'saleProduct']);
 Route::get('/sellPrice', [ProductSaleController::class,'sellPrice']);
 Route::get('/findCustomerInView', [ProductSaleController::class,'findCustomerInView']);
 Route::get('/findSaleDue', [ProductSaleController::class,'findSaleDue']);
+Route::get('/findCollection', [ProductSaleController::class,'findCollection']);
+Route::get('/findSaleDate', [ProductSaleController::class,'findSaleDate']);
 
 // stock
 Route::get('/stock', [StockController::class, 'index'])->name('stock.index');
@@ -212,3 +220,22 @@ Route::post('/product/update/{id}',[ProductController::class,'update'])->name('p
 Route::delete('/product/delete/{id}',[ProductController::class,'destroy'])->name('product.delete');
 
 Route::get('/getSubCat', [ProductController::class, 'getSubCat']);
+
+//invoice
+Route::get('/ecommerce/invoice', [InvoiceController::class, 'index'])->name('ecom_invoice.index');
+Route::get('/ecommerce/invoice/create', [InvoiceController::class, 'create'])->name('ecom_invoice.create');
+Route::post('/ecommerce/invoice/store', [InvoiceController::class, 'store'])->name('ecom_invoice.store');
+Route::get('/ecommerce/invoice/edit/{id}', [InvoiceController::class, 'edit'])->name('ecom_invoice.edit');
+Route::post('/ecommerce/invoice/update/{id}', [InvoiceController::class, 'update'])->name('ecom_invoice.update');
+Route::get('/ecommerce/invoice/show/{invoice}', [InvoiceController::class, 'show'])->name('ecom_invoice.show');
+Route::get('/ecommerce/invoice/delete/{id}', [InvoiceController::class, 'destroy'])->name('ecom_invoice.delete');
+
+Route::get('/ecomCategory', [InvoiceController::class, 'ecomCategory']);
+Route::get('/ecomSubCategory', [InvoiceController::class, 'ecomSubCategory']);
+Route::get('/ecomproductsellprice', [InvoiceController::class, 'ecomproductsellprice']);
+Route::get('/ecomproductquantity', [InvoiceController::class, 'ecomproductquantity']);
+Route::get('/ecomsalequantity', [InvoiceController::class, 'ecomsalequantity']);
+
+
+
+

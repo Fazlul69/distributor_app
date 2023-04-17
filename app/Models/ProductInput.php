@@ -11,7 +11,7 @@ class ProductInput extends Model
 
     protected $fillable = [
         'invoice',
-        'supplier_id',
+        'supplier_name',
         'product_id',
         'category_id',
         'company_price',
@@ -30,7 +30,7 @@ class ProductInput extends Model
 
     function vendor(){
 
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'vendor_id');
     }
 
     function Supplier(){

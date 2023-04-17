@@ -22,23 +22,12 @@
                                 </div>
                                 <div class="col">
                                     <label for="bill" class="form-label">Bill to</label>
-                                    <select class="form-control p_bill" name="supplier_id[]">
-                                            <option value="">Select a Supplier</option>
-                                                @foreach($suppliers as $supplier)
-                                                    <option value="{{$supplier->id}}">{{$supplier->supplier_mobile_no}}</option>
-                                                @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="supplier_name[]" placeholder="Company Name">
                                 </div>
                                 <div class="col">
-                                    @php
-                                        $heee = DB::table('product_inputs')->latest('id')->first();
-                                    @endphp
                                     <label for="invoice" class="form-label">Invoice No</label>
-                                    @if(empty($heee->invoice))
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="101" placeholder="S101" required>
-                                    @else
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="{{$heee->invoice+1}}" placeholder="S101" required>
-                                    @endif
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]"  placeholder="101" required>
+                                    
                                 </div>
                                 <div class="col">
                                     <label for="date" class="form-label">date</label>
@@ -85,7 +74,6 @@
                                     <select class="form-control productNameforpurchase" id="oiHgu" name="product_id[]">
                                         <option value="">Item</option>
                                     </select>
-                                    <!-- <input type="text" class="form-control" id="product_name" name="product_name[]" placeholder="Item" required> -->
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control company_price" id="company_price" name="company_price[]" placeholder="DP">
