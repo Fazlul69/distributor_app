@@ -21,6 +21,7 @@ use App\Http\Controllers\ProductSaleController;
 use App\Http\Controllers\Ecom\InvoiceController;
 use App\Http\Controllers\Ecom\ProductController;
 use App\Http\Controllers\EcomCategoryController;
+use App\Http\Controllers\settings\BannerController;
 use App\Http\Controllers\settings\OutsideSettingsController;
 
 /*
@@ -242,4 +243,7 @@ Route::get('/settings', [OutsideSettingsController::class, 'index'])->name('sett
 Route::post('/settings/store', [OutsideSettingsController::class, 'store'])->name('settings.store');
 Route::post('/settings/update/{id}', [OutsideSettingsController::class, 'update'])->name('settings.update');
 
+Route::get('/settings/banner', [BannerController::class, 'index'])->name('banner.index');
+Route::post('/settings/banner/store', [BannerController::class, 'store'])->name('banner.store');
+Route::delete('/settings/banner/delete/{id}',[BannerController::class,'destroy'])->name('banner.delete');
 

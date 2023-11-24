@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Ecom;
+namespace App\Http\Controllers\settings;
 
 use App\Models\Detail;
-use App\Models\Product;
-use App\Models\SubCategory;
-use App\Models\EcomCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 
-class HeaderController extends Controller
+class BannerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,25 +16,10 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        $sliders = Banner::all();
         $detail = Detail::first();
-        $products = Product::orderBy('id', 'DESC')->get();
-        $ecomcategories = EcomCategory::all();
-        $subcategories = SubCategory::all();
-        return view('welcome', compact('products', 'ecomcategories', 'subcategories','detail', 'sliders'));
+        $banners = Banner::all();
+        return view('pos.settings.banner', compact('detail', 'banners'));
     }
-
-    public function getEcomCat(Request $request)
-    {
-        $data = SubCategory::select('subcategory_name', 'id')->where('category_id', $request->id)->take(100)->get();
-        return response()->json($data);
-    }
-
-    // public function frontView()
-    // {
-    //     $products = Product::all();
-    //     return view('layouts.', compact('products'));
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +39,26 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'image' => 'required',
+            'serial' => 'required',
+        ]);
+
+        $banner = new Banner();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('banner/', $filename);
+            $banner->image = $filename;
+        } else {
+            $banner->image = '';
+        }
+        $banner->serial = $request->serial;
+        $banner->save();
+        
+        // Session::flash('success','Data insert successfully');
+        return redirect()->back()->with('success', 'Data Upload Successfully');
     }
 
     /**
@@ -68,20 +69,7 @@ class HeaderController extends Controller
      */
     public function show($id)
     {
-        $detail = Detail::first();
-
-        $products = Product::find($id);
-        $ecomcategories = EcomCategory::all();
-        return view('layouts.productview', compact('products', 'ecomcategories', 'detail'));
-    }
-
-    public function categoryshow(Request $request)
-    {
-        $detail = Detail::first();
-
-        $products = Product::where('subcategory_id', $request->id)->take(100)->get();
-        $ecomcategories = EcomCategory::all();
-        return view('layouts.category_wise_productview', compact('products', 'ecomcategories', 'detail'));
+        //
     }
 
     /**
@@ -115,6 +103,7 @@ class HeaderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Banner::find($id)->delete();
+        return redirect()->back();
     }
 }

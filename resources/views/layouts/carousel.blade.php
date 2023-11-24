@@ -1,25 +1,26 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{asset('images/led.png')}}" class="d-block w-100" alt="..." height="456px">
+<div class="container">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      @foreach ($sliders as $item)
+          <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+              <img src="{{ asset('banner/'. $item->image) }}" class="d-block w-100" alt="" height="350px">
+          </div>
+      @endforeach
     </div>
-    <div class="carousel-item">
-      <img src="{{asset('images/fan.webp')}}" class="d-block w-100" alt="..." height="456px">
-    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
-<div class="up_level">
-    <h1>{{$detail->company_name}}</h1>
-    <p>Electronics is clearly the winner of</p>
-    <p>the day.</p>
-    <h5>--- John Ford ---</h5>
+  {{-- <div class="up_level">
+      <h1>{{$detail->company_name}}</h1>
+      <p></p>
+      <p></p>
+      <h5></h5>
+  </div> --}}
 </div>
