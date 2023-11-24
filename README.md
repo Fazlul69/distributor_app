@@ -1,6 +1,6 @@
 # Distributor App
 
-![App Screenshot](screenshots/main_screen.png)
+![App Screenshot](public/mainpage.png)
 
 [![Build Status](https://your-build-badge-url)](https://your-build-url)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Fazlul69/distributor_app/blob/main/LICENSE.md)
