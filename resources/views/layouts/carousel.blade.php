@@ -18,7 +18,7 @@
 </div>
 
 <div class="up_level">
-    <h1>Bismillah Tredars</h1>
+    <h1>{{$detail->company_name}}</h1>
     <p>Electronics is clearly the winner of</p>
     <p>the day.</p>
     <h5>--- John Ford ---</h5>

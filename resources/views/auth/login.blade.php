@@ -3,29 +3,25 @@
 @section('content')
 <div class="container" style="margin-top: 200px;">
     <div class="row justify-content-center">
-        <div class="col-6 loging">
+        {{-- <div class="col-6 loging"> --}}
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="sinin-image">
-                        <figure><img src="{{asset('images/logo2.png')}}" alt="" width="320px" style="margin-top: 16px;"></figure>
+                <div class="col-sm-6 col-md-6">
+                    <div class="sinin-image" style="text-align: right">
+                        <figure><img src="{{asset('details/'. $detail->login_logo)}}" alt="" width="320px"></figure>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="sinin-form">
                         <!-- <div class="card-header">{{ __('Login') }}</div> -->
-                        @if(session()->has('error'))
-                        <div class="alert alert-danger">
-                                {{ session()->get('error') }}
-                            </div>
-                        @endif
-                        <div class="card-body">
+                        @include('pos.message.message')
+                        {{-- <div class="card-body"> --}}
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <h2 class="form-title">Login</h2>
                                 <div class="form-group row">
                                     <!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> -->
 
-                                    <div class="col-sm-6 col-md-12">
+                                    <div class="col-sm-6 col-md-6">
                                         <input id="email" type="email" placeholder="Email Address" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus style="margin-bottom: 20px;">
 
                                         @error('email')
@@ -39,7 +35,7 @@
                                 <div class="form-group row">
                                     <!-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> -->
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="margin-bottom: 20px;">
 
                                         @error('password')
@@ -74,11 +70,11 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        {{-- </div> --}}
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
     </div>
 </div>
 @endsection

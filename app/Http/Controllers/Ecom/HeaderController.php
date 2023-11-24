@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Ecom;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\EcomCategory;
-use App\Models\SubCategory;
+use App\Models\Detail;
 use App\Models\Product;
+use App\Models\SubCategory;
+use App\Models\EcomCategory;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HeaderController extends Controller
 {
@@ -17,10 +18,11 @@ class HeaderController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $products = Product::orderBy('id', 'DESC')->get();
         $ecomcategories = EcomCategory::all();
         $subcategories = SubCategory::all();
-        return view('welcome', compact('products', 'ecomcategories', 'subcategories'));
+        return view('welcome', compact('products', 'ecomcategories', 'subcategories','detail'));
     }
 
     public function getEcomCat(Request $request)
@@ -64,16 +66,20 @@ class HeaderController extends Controller
      */
     public function show($id)
     {
+        $detail = Detail::first();
+
         $products = Product::find($id);
         $ecomcategories = EcomCategory::all();
-        return view('layouts.productview', compact('products', 'ecomcategories'));
+        return view('layouts.productview', compact('products', 'ecomcategories', 'detail'));
     }
 
     public function categoryshow(Request $request)
     {
+        $detail = Detail::first();
+
         $products = Product::where('subcategory_id', $request->id)->take(100)->get();
         $ecomcategories = EcomCategory::all();
-        return view('layouts.category_wise_productview', compact('products', 'ecomcategories'));
+        return view('layouts.category_wise_productview', compact('products', 'ecomcategories', 'detail'));
     }
 
     /**

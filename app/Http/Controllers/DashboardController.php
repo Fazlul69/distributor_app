@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\ProductInput;
-use App\Models\ProductSale;
-use App\Models\Collection;
+use App\Models\Detail;
 use App\Models\Expense;
 use App\Models\Replace;
+use App\Models\Collection;
+use App\Models\ProductSale;
+use App\Models\ProductInput;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
@@ -19,11 +20,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $expenses = Expense::all();
         $collections = Collection::all();
         $productinputs = ProductInput::all();
         $productsales = ProductSale::all();
-        return view('pos.dashboard', compact('productinputs','productsales','collections','expenses'));
+        return view('pos.dashboard', compact('productinputs','productsales','collections','expenses', 'detail'));
     }
 
     public function getdata(Request $request)

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Ecom;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Ecomsale;
-use App\Models\EcomCategory;
-use App\Models\SubCategory;
+use App\Models\Detail;
 use App\Models\Product;
+use App\Models\Ecomsale;
+use App\Models\SubCategory;
+use App\Models\EcomCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class InvoiceController extends Controller
 {
@@ -19,8 +20,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $ecomsales = Ecomsale::all();
-        return view('ecom.invoice.index', compact('ecomsales'));
+        return view('ecom.invoice.index', compact('ecomsales', 'detail'));
     }
 
     /**
@@ -30,8 +32,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
+        $detail = Detail::first();
         $ecomcategories = EcomCategory::all();
-        return view('ecom.invoice.create', compact('ecomcategories'));
+        return view('ecom.invoice.create', compact('ecomcategories', 'detail'));
     }
 
 
@@ -71,8 +74,9 @@ class InvoiceController extends Controller
      */
     public function show($invoice)
     {
+        $detail = Detail::first();
         $ecomsales = Ecomsale::where([['invoice', '=', $invoice]])->get();
-        return view('ecom.invoice.view', compact('ecomsales'));
+        return view('ecom.invoice.view', compact('ecomsales', 'detail'));
     }
 
     /**
@@ -83,8 +87,9 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
         $ecomsales = Ecomsale::find($id);
-        return view('ecom.invoice.edit', compact('ecomsales'));
+        return view('ecom.invoice.edit', compact('ecomsales', 'detail'));
     }
 
     /**

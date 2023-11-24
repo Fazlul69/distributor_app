@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Detail;
 use App\Models\Vendor;
 use App\Models\Company;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -16,9 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $vendors = Company::all();
         $categories = Category::all();
-        return view('pos.purchase.category.index', compact('vendors'))->with('categories', $categories);
+        return view('pos.purchase.category.index', compact('vendors', 'detail'))->with('categories', $categories);
     }
 
     /**
@@ -68,8 +70,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
         $categories = Category::find($id);
-        return view('pos.purchase.category.edit',compact('categories'));
+        return view('pos.purchase.category.edit',compact('categories', 'detail'));
     }
 
     /**

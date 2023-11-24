@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Ecom;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Detail;
+use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\EcomCategory;
-use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -17,10 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $products = Product::all();
         $ecomcategories = EcomCategory::all();
         $subcategories = SubCategory::all();
-        return view('ecom.product', compact('products', 'ecomcategories', 'subcategories'));
+        return view('ecom.product', compact('products', 'ecomcategories', 'subcategories', 'detail'));
     }
 
     public function getSubCat(Request $request)
@@ -103,8 +105,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
         $products = Product::find($id);
-        return view('ecom.product_edit',compact('products'));
+        return view('ecom.product_edit',compact('products', 'detail'));
     }
 
     /**

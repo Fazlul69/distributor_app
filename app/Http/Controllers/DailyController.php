@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Collection;
-use App\Models\Expense;
 use App\Models\Note;
+use App\Models\Detail;
+use App\Models\Expense;
 use App\Models\Customer;
 use Mockery\Matcher\Not;
+use App\Models\Collection;
+use Illuminate\Http\Request;
 
 class DailyController extends Controller
 {
@@ -22,9 +23,10 @@ class DailyController extends Controller
     }
     public function collection()
     {
+        $detail = Detail::first();
         $collections = Collection::all();
         $customers = Customer::all();
-        return view('pos.daily.collection.index', compact('collections', 'customers'));
+        return view('pos.daily.collection.index', compact('collections', 'customers', 'detail'));
     }
     public function collection_store(Request $request)
     {
@@ -41,8 +43,9 @@ class DailyController extends Controller
     }
     public function collection_edit($id)
     {
+        $detail = Detail::first();
         $collections = Collection::find($id);
-        return view('pos.daily.collection.edit', compact('collections'));
+        return view('pos.daily.collection.edit', compact('collections', 'detail'));
     }
     public function collection_update(Request $request, $id)
     {
@@ -73,8 +76,9 @@ class DailyController extends Controller
     //expense
     public function expense()
     {
+        $detail = Detail::first();
         $expenses = Expense::all();
-        return view('pos.daily.expense.index', compact('expenses'));
+        return view('pos.daily.expense.index', compact('expenses', 'detail'));
     }
     public function expense_store(Request $request)
     {
@@ -89,8 +93,9 @@ class DailyController extends Controller
     }
     public function expense_edit($id)
     {
+        $detail = Detail::first();
         $expenses = Expense::find($id);
-        return view('pos.daily.expense.edit', compact('expenses'));
+        return view('pos.daily.expense.edit', compact('expenses', 'detail'));
     }
     public function expense_update(Request $request, $id)
     {
@@ -120,8 +125,9 @@ class DailyController extends Controller
     //note
     public function note()
     {
+        $detail = Detail::first();
         $notes = Note::all();
-        return view('pos.daily.note.index', compact('notes'));
+        return view('pos.daily.note.index', compact('notes', 'detail'));
     }
 
     public function note_store(Request $request)
@@ -137,8 +143,9 @@ class DailyController extends Controller
     }
     public function note_edit($id)
     {
+        $detail = Detail::first();
         $notes = Note::find($id);
-        return view('pos.daily.note.edit', compact('notes'));
+        return view('pos.daily.note.edit', compact('notes', 'detail'));
     }
     public function note_update(Request $request, $id)
     {

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Replace;
+use App\Models\Detail;
 use App\Models\Company;
+use App\Models\Replace;
+use Illuminate\Http\Request;
 
 class ReplaceController extends Controller
 {
@@ -15,9 +16,10 @@ class ReplaceController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $replaces = Replace::all();
         $vendors = Company::all();
-        return view('pos.replace.index', compact('replaces', 'vendors'));
+        return view('pos.replace.index', compact('replaces', 'vendors', 'detail'));
     }
 
     /**
@@ -71,8 +73,10 @@ class ReplaceController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
+
         $replaces = Replace::find($id);
-        return view('pos.replace.edit',compact('replaces'));
+        return view('pos.replace.edit',compact('replaces', 'detail'));
     }
 
     /**

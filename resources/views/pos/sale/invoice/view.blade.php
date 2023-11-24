@@ -81,14 +81,14 @@
             <div class="print_invoice card printTables" id="printTable">
                 <div class="card-body">
                     <div class="row top">
-                        <div class="col"><img src="{{asset('images/logo2.png')}}" alt=""></div>
+                        <div class="col"><img src="{{asset('details/'. $detail->dashboard_logo)}}" alt=""></div>
                         <div class="col"></div>
                         <div class="col address">
-                            <p><strong style="margin-left: 75px;">Wapda Road</strong>, <br><strong>Chawk Bazar</strong>, <strong>Comilla</strong>. <br></p>
-                            <p><strong>Mobile:</strong> 01614-342654</p>
-                            <p style="margin-left: 62px;">01924-342654</p>
-                            <p><strong>Bkash:</strong> &nbsp;01873-342654</p>
-                            <p><strong>Email:</strong> jcjoyb1991@gmail.com</p>
+                            <p><strong>{{$detail->address}}</strong></p>
+                            <p><strong>Mobile:</strong> {{$detail->mobile_1}}</p>
+                            <p style="margin-left: 62px;">{{$detail->mobile_2}}</p>
+                            {{-- <p><strong>Bkash:</strong> &nbsp;01873-342654</p> --}}
+                            <p><strong>Email:</strong> {{$detail->email_1}}</p>
                         </div>
                     </div>
                     <hr class="my-5">
@@ -211,7 +211,7 @@
                                     <p>Recive/Copy</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <h2>Bismillah Tredars</h2>
+                                    <h2>{{$detail->company_name}}</h2>
                                 </div>
                                 <div class="col-md-4">
                                     <p class="text-center">Date:</p>
@@ -294,7 +294,7 @@
             border-radius: 10px;
             height: 100%;
         }
-        .print_invoice img{width: 200px;}
+        .print_invoice img{width: 150px;}
         .address p{padding: 0; margin: 0;}
         thead.pre_head {
             color: #fff;

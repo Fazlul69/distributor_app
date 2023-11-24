@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Company;
 use Session;
+use App\Models\Detail;
+use App\Models\Company;
+use Illuminate\Http\Request;
 
 class VendorController extends Controller
 {
@@ -15,8 +16,9 @@ class VendorController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $vendors=Company::all();
-        return view('pos.purchase.vendor.index')->with('vendors',$vendors);
+        return view('pos.purchase.vendor.index', compact('detail'))->with('vendors',$vendors);
     }
 
     /**
@@ -88,8 +90,10 @@ class VendorController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
+
         $vendors = Company::find($id);
-        return view('pos.purchase.vendor.edit',compact('vendors'));
+        return view('pos.purchase.vendor.edit',compact('vendors', 'detail'));
     }
 
     /**

@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\ProductSale;
-use App\Models\Supplier;
-use App\Models\Customer;
-use App\Models\ProductInput;
-use App\Models\Category;
 use App\Models\Item;
-use App\Models\Salenote;
+use App\Models\Detail;
 use App\Models\Company;
-use App\Models\Collection;
 use App\Models\Replace;
+use App\Models\Category;
+use App\Models\Customer;
+use App\Models\Salenote;
+use App\Models\Supplier;
+use App\Models\Collection;
+use App\Models\ProductSale;
+use App\Models\ProductInput;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductSaleController extends Controller
@@ -21,20 +22,23 @@ class ProductSaleController extends Controller
     public function index()
     {
         // $productsales = ProductSale::all();
+        $detail = Detail::first();
         $collections = Collection::all();
         $replaces = Replace::all();
         $productsales = ProductSale::distinct()->orderBy('invoice')->get();
         $productsales = ProductSale::paginate(50);
-        return view('pos.sale.invoice.index', compact('replaces','collections'))->with('productsales', $productsales);
+        return view('pos.sale.invoice.index', compact('replaces','collections', 'detail'))->with('productsales', $productsales);
     }
 
     
     public function create()
     {
+        $detail = Detail::first();
+
         $vendors = Company::all();
         $suppliers = Supplier::all();
         $customers = Customer::all();
-        return view('pos.sale.invoice.create', compact('suppliers', 'customers'))->with('vendors', $vendors);
+        return view('pos.sale.invoice.create', compact('suppliers', 'customers', 'detail'))->with('vendors', $vendors);
     }
 
     public function findCategory(Request $request)
@@ -94,19 +98,23 @@ class ProductSaleController extends Controller
 
     public function show($invoice)
     {
+        $detail = Detail::first();
+
         $customers = Customer::all();
         $productsales = ProductSale::where([['invoice', '=', $invoice]])->get();
         // dd($productsales);
         $vendors = Company::all();
-        return view('pos.sale.invoice.view',compact('customers', 'vendors'))->with('productsales', $productsales);
+        return view('pos.sale.invoice.view',compact('customers', 'vendors', 'detail'))->with('productsales', $productsales);
     }
     public function show_two($invoice)
     {
+        $detail = Detail::first();
+
         $customers = Customer::all();
         $productsales = ProductSale::where([['invoice', '=', $invoice]])->get();
         // dd($productsales);
         $vendors = Company::all();
-        return view('pos.sale.invoice.view_two',compact('customers', 'vendors'))->with('productsales', $productsales);
+        return view('pos.sale.invoice.view_two',compact('customers', 'vendors', 'detail'))->with('productsales', $productsales);
     }
     
 
@@ -149,8 +157,10 @@ class ProductSaleController extends Controller
 
     public function edit($id)
     {
+        $detail = Detail::first();
+
         $productsales = ProductSale::find($id);
-        return view('pos.sale.invoice.edit', compact('productsales'));
+        return view('pos.sale.invoice.edit', compact('productsales', 'detail'));
     }
 
     public function update(Request $request, $id)
@@ -168,6 +178,8 @@ class ProductSaleController extends Controller
 
     public function datesearch(Request $request)
     {
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
 
         $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%')
@@ -178,12 +190,14 @@ class ProductSaleController extends Controller
                     ->paginate(120);
         $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        return view('pos.sale.invoice.index')->with('productinputs',$productinputs)
+        return view('pos.sale.invoice.index', compact('detail'))->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
                 ->with('productsales',$productsales);
     }
     public function invoicesearch(Request $request)
     {
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
 
         $productinputs = ProductInput::where('invoice','LIKE','%'.$search_text.'%')
@@ -192,12 +206,14 @@ class ProductSaleController extends Controller
                     ->paginate(120);
         $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        return view('pos.sale.invoice.index')->with('productinputs',$productinputs)
+        return view('pos.sale.invoice.index', compact('detail'))->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
                 ->with('productsales',$productsales);
     }
     public function cussearch(Request $request)
     {
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
 
         $productinputs = ProductInput::where('invoice','LIKE','%'.$search_text.'%')
@@ -212,7 +228,7 @@ class ProductSaleController extends Controller
         $customers = Customer::where('customer_name','LIKE','%'.$search_text.'%')
                     ->orWhere('cus_mobile','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        return view('pos.sale.invoice.index')->with('productinputs',$productinputs)
+        return view('pos.sale.invoice.index', compact('detail'))->with('productinputs',$productinputs)
                 ->with('vendors',$vendors)
                 ->with('productsales',$productsales);
     }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Detail;
 use App\Models\Company;
 use App\Models\Missing;
 use App\Models\ProductInput;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MissingController extends Controller
@@ -17,9 +18,10 @@ class MissingController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $vendors = Company::all();
         $missings = Missing::all();
-        return view('pos.missing.index', compact('vendors', 'missings'));
+        return view('pos.missing.index', compact('vendors', 'missings', 'detail'));
     }
 
     /**
@@ -69,8 +71,10 @@ class MissingController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
+
         $missings = Missing::find($id);
-        return view('pos.missing.edit',compact('missings'));
+        return view('pos.missing.edit',compact('missings', 'detail'));
     }
 
     /**
@@ -109,6 +113,9 @@ class MissingController extends Controller
     }
 
     public function search(Request $request){
+
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
         $productinputs = ProductInput::where('product_name','LIKE','%'.$search_text.'%');
         $data = DB::table('damages')
@@ -116,6 +123,6 @@ class MissingController extends Controller
                 ->where('product_name','LIKE','%'.$search_text.'%')
                 ->get();
         $vendors = Company::all();
-        return view('pos.damage.index', compact('vendors'))->with('data', $data);
+        return view('pos.damage.index', compact('vendors', 'detail'))->with('data', $data);
     }
 }

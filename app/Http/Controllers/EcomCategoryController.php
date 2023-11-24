@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\EcomCategory;
+use App\Models\Detail;
 use App\Models\SubCategory;
+use App\Models\EcomCategory;
+use Illuminate\Http\Request;
 
 class EcomCategoryController extends Controller
 {
@@ -15,9 +16,10 @@ class EcomCategoryController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $ecomcategories = EcomCategory::all();
         $subcategories = SubCategory::all();
-        return view('ecom.category', compact('ecomcategories', 'subcategories'));
+        return view('ecom.category', compact('ecomcategories', 'subcategories', 'detail'));
     }
 
     /**

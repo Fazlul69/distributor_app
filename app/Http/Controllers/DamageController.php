@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Models\Vendor;
-use App\Models\ProductInput;
-use App\Models\Damage;
 use App\Models\Item;
+use App\Models\Damage;
+use App\Models\Detail;
+use App\Models\Vendor;
 use App\Models\Company;
+use App\Models\Category;
+use App\Models\ProductInput;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DamageController extends Controller
@@ -20,10 +21,11 @@ class DamageController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $damages = Damage::all();
         $vendors = Company::all();
         $productinputs = ProductInput::all();
-        return view('pos.damage.index', compact('damages', 'vendors', 'productinputs'));
+        return view('pos.damage.index', compact('damages', 'vendors', 'productinputs', 'detail'));
     }
 
     public function findDamageProductCat(Request $request)
@@ -82,8 +84,9 @@ class DamageController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
         $damages = Damage::find($id);
-        return view('pos.damage.edit',compact('damages'));
+        return view('pos.damage.edit',compact('damages', 'detail'));
     }
 
     /**
@@ -123,6 +126,9 @@ class DamageController extends Controller
     }
 
     public function search(Request $request){
+
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
         $damages = DB::table('damages')
                 ->join('items', 'items.id', '=', 'damages.product_id')
@@ -132,6 +138,6 @@ class DamageController extends Controller
         
         $vendors = Company::all();
         $items = Item::all();
-        return view('pos.damage.index', compact('vendors', 'damages', 'items'));
+        return view('pos.damage.index', compact('vendors', 'damages', 'items', 'detail'));
     }
 }

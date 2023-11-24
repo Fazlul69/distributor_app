@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Detail;
 use App\Models\Customer;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -14,9 +15,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $customers = Customer::all();
         $customers = Customer::paginate(10);
-        return view('pos.customer.index')->with('customers', $customers);
+        return view('pos.customer.index', compact('detail'))->with('customers', $customers);
     }
 
     /**
@@ -30,11 +32,12 @@ class CustomerController extends Controller
     }
 
     public function search(Request $request){
+        $detail = Detail::first();
         $search_text = $_GET['query'];
         $customers = Customer::where('cus_mobile','LIKE','%'.$search_text.'%')
                                 ->orWhere('customer_name','LIKE','%'.$search_text.'%')
                                 ->paginate(15);
-        return view('pos.customer.index')->with('customers',$customers);
+        return view('pos.customer.index', compact('detail'))->with('customers',$customers);
     }
 
     /**
@@ -81,8 +84,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
         $customers = Customer::find($id);
-        return view('pos.customer.edit',compact('customers'));
+        return view('pos.customer.edit',compact('customers', 'detail'));
     }
 
     /**

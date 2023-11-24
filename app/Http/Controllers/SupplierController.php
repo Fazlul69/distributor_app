@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Supplier;
+use App\Models\Detail;
 use App\Models\Vendor;
 use App\Models\Company;
+use App\Models\Supplier;
+use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
@@ -16,9 +17,10 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $suppliers = Supplier::all();
         $vendors = Company::all();
-        return view('pos.purchase.supplier.index')->with('suppliers', $suppliers)
+        return view('pos.purchase.supplier.index', compact('detail'))->with('suppliers', $suppliers)
                                         ->with('vendors', $vendors);
     }
 
@@ -72,9 +74,11 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
+        $detail = Detail::first();
+
         $suppliers = Supplier::find($id);
         $vendors = Company::all();
-        return view('pos.purchase.supplier.edit',compact('suppliers'))->with('vendors', $vendors);
+        return view('pos.purchase.supplier.edit',compact('suppliers', 'detail'))->with('vendors', $vendors);
     }
 
     /**
@@ -120,6 +124,8 @@ class SupplierController extends Controller
 
     public function search(Request $request)
     {
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
 
         $suppliers = Supplier::where('supplier_name','LIKE','%'.$search_text.'%')
@@ -127,7 +133,7 @@ class SupplierController extends Controller
                     ->paginate(120);
         $vendors = Company::where('name','LIKE','%'.$search_text.'%')
                     ->paginate(120);
-        return view('pos.purchase.supplier.index')->with('suppliers',$suppliers)
+        return view('pos.purchase.supplier.index', compact('detail'))->with('suppliers',$suppliers)
                 ->with('vendors',$vendors);
     }
 }

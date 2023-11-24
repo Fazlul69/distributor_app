@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function index(){
-        return view('auth.login');
+        $detail = Detail::first();
+        return view('auth.login', compact('detail'));
     }
 
     public function authenticate(Request $request)

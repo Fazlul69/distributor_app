@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\Item;
+use App\Models\Detail;
+use App\Models\Company;
+use App\Models\Vendor; 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\Vendor; 
-use App\Models\Item;
-use App\Models\Company;
-use Exception;
 
 class ItemController extends Controller
 {
@@ -18,10 +19,11 @@ class ItemController extends Controller
      */
     public function index()
     {
+        $detail = Detail::first();
         $vendors = Company::all();
         $items = Item::all();
         $items = Item::paginate(10);
-        return view('pos.item.index', compact('vendors', 'items'));
+        return view('pos.item.index', compact('vendors', 'items', 'detail'));
     }
 
     /**
@@ -77,13 +79,15 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
+        $detail = Detail::first();
+
         $search_text = $_GET['query'];
 
         $items = Item::where('product_name','LIKE','%'.$search_text.'%')
                     ->paginate(15);
         $vendors = Vendor::all();
         $categories = Category::all();
-        return view('pos.item.index')->with('items',$items)
+        return view('pos.item.index', compact('detail'))->with('items',$items)
                 ->with('vendors',$vendors)
                 ->with('categories',$categories);
     }
@@ -97,7 +101,8 @@ class ItemController extends Controller
     public function edit($id)
     {
         $items = Item::find($id);
-        return view('pos.item.edit',compact('items'));
+        $detail = Detail::first();
+        return view('pos.item.edit',compact('items', 'detail'));
     }
 
     /**

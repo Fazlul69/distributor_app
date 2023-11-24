@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Bismillah Traders</title>
+  <title>{{$detail->company_name}}</title>
 
   <!-- Google Font: Source Sans Pro -->  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -247,8 +247,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<script src="{{ mix('js/app.js')}}"></script>
-<script src="{{ mix('js/purcahseAddRow.js') }}"></script> 
+<script src="{{mix('js/app.js')}}"></script>
+<script src="{{mix('js/purcahseAddRow.js') }}"></script> 
 <script src="{{mix('js/salesAddRow.js')}}"></script>
 <script src="{{mix('js/purchaseDropdown.js')}}"></script>
 <script src="{{mix('js/saledropdown.js')}}"></script>

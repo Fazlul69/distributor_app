@@ -3,24 +3,25 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProductInController;
-use App\Http\Controllers\VendorController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ProductSaleController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\DailyController;
 use App\Http\Controllers\StockController;
-use App\Http\Controllers\EcomCategoryController;
 use App\Http\Controllers\DamageController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\Ecom\HeaderController;
-use App\Http\Controllers\Ecom\ProductController;
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\VendorController;
 use App\Http\Controllers\MissingController;
 use App\Http\Controllers\ReplaceController;
-use App\Http\Controllers\DailyController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductInController;
+use App\Http\Controllers\Ecom\HeaderController;
+use App\Http\Controllers\ProductSaleController;
 use App\Http\Controllers\Ecom\InvoiceController;
+use App\Http\Controllers\Ecom\ProductController;
+use App\Http\Controllers\EcomCategoryController;
+use App\Http\Controllers\settings\OutsideSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -236,6 +237,9 @@ Route::get('/ecomproductsellprice', [InvoiceController::class, 'ecomproductsellp
 Route::get('/ecomproductquantity', [InvoiceController::class, 'ecomproductquantity']);
 Route::get('/ecomsalequantity', [InvoiceController::class, 'ecomsalequantity']);
 
-
+//setings
+Route::get('/settings', [OutsideSettingsController::class, 'index'])->name('settings.index');
+Route::post('/settings/store', [OutsideSettingsController::class, 'store'])->name('settings.store');
+Route::post('/settings/update/{id}', [OutsideSettingsController::class, 'update'])->name('settings.update');
 
 
