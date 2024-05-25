@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function getSubCat(Request $request)
     {
-        $data = SubCategory::select('subcategory_name', 'id')->where('category_id', $request->id)->take(100)->get();
+        $data = SubCategory::select('subcategory_name', 'id')->where('category_id', $request->id)->get();
         return response()->json($data);
     }
 

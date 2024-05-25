@@ -15,6 +15,6 @@ class EcomCategory extends Model
 
     public function subcategory()
     {
-        return $this->belongsTo(Subcategory::class, "category_id");
+        return $this->hasMany(Subcategory::class);
     }
 }

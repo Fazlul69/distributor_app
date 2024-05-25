@@ -18,15 +18,15 @@ class AdminSeeder extends Seeder
     {
         $userData = [
             [
-            'name' => 'Bismillah',
-            'email' => 'store@bismillahtraders.com',
-            'password' => Hash::make('12345678'),
+            'name' => 'Life Water',
+            'email' => 'lifewater.ctg@gmail.com',
+            'password' => Hash::make('life@water'),
             'role' => '1',
             ],
             [
                 'name' => 'user',
                 'email' => 'user@gmail.com',
-                'password' => Hash::make('12345678'),
+                'password' => Hash::make('12345689'),
                 'role' => '2',
             ],
         ];

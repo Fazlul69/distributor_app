@@ -166,14 +166,7 @@
               </p>
             </a>
           </li>
-          <!-- <li class="nav-item gdJue">
-            <a href="{{route('missing.index')}}" class="nav-link">
-              <Strong style="margin-left: 10px; margin-right: 10px;">D</Strong>
-              <p>
-              Daily
-              </p>
-            </a>
-          </li> -->
+         
           <li class="nav-item gdJue">
             <a href="#" class="nav-link">
             <Strong style="margin-left: 10px; margin-right: 10px;">D</Strong>

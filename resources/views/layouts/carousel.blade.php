@@ -17,10 +17,10 @@
     </button>
   </div>
 
-  {{-- <div class="up_level">
+  <div class="up_level">
       <h1>{{$detail->company_name}}</h1>
       <p></p>
       <p></p>
       <h5></h5>
-  </div> --}}
+  </div>
 </div>

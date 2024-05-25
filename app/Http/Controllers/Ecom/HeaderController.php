@@ -79,7 +79,7 @@ class HeaderController extends Controller
     {
         $detail = Detail::first();
 
-        $products = Product::where('subcategory_id', $request->id)->take(100)->get();
+        $products = Product::where('subcategory_id', $request->id)->get();
         $ecomcategories = EcomCategory::all();
         return view('layouts.category_wise_productview', compact('products', 'ecomcategories', 'detail'));
     }
