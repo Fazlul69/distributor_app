@@ -38,8 +38,8 @@
                 <tbody>
                     @foreach($items as $item)
                     <tr>
-                    <td>{{$item->vendor->name}}</td>
-                    <td>{{$item->category->category_name}}</td>
+                    <td>{{$item->vendor->name ?? null}}</td>
+                    <td>{{$item->category->category_name ?? null }}</td>
                     <td>{{$item->product_name}}</td>
                     @if(auth()->user()->role == 2)
                     <td>0</td>

@@ -197,6 +197,8 @@ class ProductInController extends Controller
      */
     public function destroy($id)
     {
+        $productinput = ProductInput::find($id);
+        $productinput->delete();
         return redirect(route('pinput.view'));
     }
 }

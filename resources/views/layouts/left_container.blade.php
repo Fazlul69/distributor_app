@@ -207,11 +207,11 @@
             </ul>
           </li>
 
-          <li class="nav-header">Others</li>
+          {{-- <li class="nav-header">Others</li> --}}
 
 
           <!-- Ecommerce -->
-          <li class="nav-item gdJue">
+          {{-- <li class="nav-item gdJue">
             <a href="#" class="nav-link">
               <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
@@ -280,7 +280,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-item gdJue">
             <a href="{{route('logout')}}" class="nav-link">
               <!-- <i class="nav-icon fas fa-copy"></i> -->

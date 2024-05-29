@@ -29,7 +29,7 @@
            </div>
            <div class="">
                <div class="card-body">
-                <table class="table table-bordered">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                             <th scope="col">Date</th>
@@ -45,7 +45,7 @@
                             <tr>
                                 <td>{{date('d-M-y', strtotime($productinput->date))}}</td>
                                 <td>{{$productinput->invoice}}</td>
-                                <td>{{$productinput->vendor->name}}</td>
+                                <td>{{$productinput->vendor->name ?? null}}</td>
                                 <td>{{$productinput->grand_total}}</td>
                                 <td>{{$productinput->due}}</td>
                                 <td>
