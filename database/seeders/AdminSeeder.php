@@ -18,10 +18,10 @@ class AdminSeeder extends Seeder
     {
         $userData = [
             [
-            'name' => 'Life Water',
-            'email' => 'lifewater.ctg@gmail.com',
-            'password' => Hash::make('life@water'),
-            'role' => '1',
+                'name' => 'Life Water',
+                'email' => 'lifewater.ctg@gmail.com',
+                'password' => Hash::make('life@water'),
+                'role' => '1',
             ],
             [
                 'name' => 'user',

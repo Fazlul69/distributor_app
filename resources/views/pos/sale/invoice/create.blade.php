@@ -21,19 +21,12 @@
                                         </select>
                                 </div>
                                 <div class="col">
-                                    @php
-                                        $heee = DB::table('product_sales')->latest('id')->first();
-                                    @endphp
                                     <label for="invoice" class="form-label">Invoice No</label>
-                                    @if(empty($heee->invoice))
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="101" placeholder="S101" required>
-                                    @else
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="{{$heee->invoice+1}}" placeholder="S101" required>
-                                    @endif
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="{{ $newInvoiceNumber }}" readonly>
                                 </div>
                                 <div class="col">
                                     <label for="date" class="form-label">date</label>
-                                    <input type="date" class="form-control" id="date" name="date[]" placeholder="date">
+                                    <input type="date" class="form-control" id="date" name="date[]" placeholder="date" value="{{ date('Y-m-d') }}">
                                 </div>
                             </div>
                             <div class="row">
@@ -127,11 +120,11 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
-                        <a href="javascript:void(0)" class="addRowforsale" style="float:inline-end">+ Add new item</a>
+                        <a href="javascript:void(0)" class="addRowforsale">+ Add new item</a>
                     </form>
                 </div>
             </div>
-            <div class="note">
+            {{-- <div class="note">
                 <div class="container">
                     <h3>Note</h3>
                         <form action="">
@@ -190,7 +183,7 @@
                                 <!-- <a href="javascript:void(1)" class="addNote btn btn-success">+</a> -->
                         </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

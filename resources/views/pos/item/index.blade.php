@@ -28,8 +28,8 @@
                     <th scope="col">Vendor</th>
                     <th scope="col">Category</th>
                     <th scope="col">Product Name</th>
-                    <th scope="col">DP</th>
-                    <th scope="col">TP</th>
+                    <th scope="col">Buy Price</th>
+                    <th scope="col">Sell Price</th>
                     <th scope="col">Discount Price</th>
                     <th scope="col">MRP</th>
                     <th>Action</th>

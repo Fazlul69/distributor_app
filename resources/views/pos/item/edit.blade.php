@@ -16,11 +16,11 @@
                     <div class="row">
                         <div class="col">
                             <label for="dp" class="form-label">DP</label>
-                            <input type="text" class="form-control" id="dp" name="dp" value="{{$items->dp}}">
+                            <input type="text" class="form-control" id="dp" name="buy_price" value="{{$items->dp}}">
                         </div>
                         <div class="col">
                             <label for="tp" class="form-label">TP</label>
-                            <input type="text" class="form-control" id="tp" name="tp" value="{{$items->tp}}">
+                            <input type="text" class="form-control" id="tp" name="sell_price" value="{{$items->tp}}">
                         </div>
                         <div class="col">
                             <label for="discount_price" class="form-label">Discount Price</label>

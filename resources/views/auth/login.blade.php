@@ -7,7 +7,9 @@
             <div class="row">
                 <div class="col-sm-6 col-md-6">
                     <div class="sinin-image" style="text-align: right">
-                        <figure><img src="{{asset('details/'. $detail->login_logo)}}" alt="" width="320px"></figure>
+                        <figure>
+                            <img src="{{ asset(optional($detail)->login_logo ? 'details/' . $detail->login_logo : 'images/login_logo.jpg') }}" alt="Login Logo" width="320px">
+                        </figure>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">

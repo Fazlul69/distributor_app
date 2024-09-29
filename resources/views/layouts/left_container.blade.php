@@ -1,8 +1,14 @@
     <!-- Brand Logo -->
-    <a href="{{route('dashboard.view')}}" class="brand-link">
-      <img src="{{asset('details/'. $detail->dashboard_logo)}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">{{$detail->company_name}}</span>
-    </a>
+    <a href="{{ route('dashboard.view') }}" class="brand-link">
+      @if(!empty($detail->dashboard_logo))
+      <img src="{{ asset(optional($detail)->dashboard_logo ? 'details/' . $detail->dashboard_logo : 'images/default_logo.jpg') }}" 
+           alt="SOLUTIONBD" 
+           class="brand-image img-circle elevation-3" 
+           style="opacity: .8">
+      @else
+      <span class="brand-text font-weight-light ml-4">{{ $detail->company_name ?? 'SOLUTIONBD' }}</span>
+      @endif
+  </a>
 
     <!-- Sidebar -->
     <div class="sidebar">

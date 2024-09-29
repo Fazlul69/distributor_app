@@ -119,7 +119,7 @@
     </div>
 
     <style>
-        .damage{padding-top: 20px;}
+        /* .damage{padding-top: 20px;} */
         .des{
             /* box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.09) !important; */
             border: 0px solid #eaedf2 !important;

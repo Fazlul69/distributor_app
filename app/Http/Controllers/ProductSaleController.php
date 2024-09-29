@@ -38,7 +38,14 @@ class ProductSaleController extends Controller
         $vendors = Company::all();
         $suppliers = Supplier::all();
         $customers = Customer::all();
-        return view('pos.sale.invoice.create', compact('suppliers', 'customers', 'detail'))->with('vendors', $vendors);
+
+        $lastProductInput = ProductSale::orderBy('id', 'desc')->first();
+        $lastInvoiceNumber = $lastProductInput ? $lastProductInput->invoice : 'INVS0000'; // Assuming an initial invoice format
+
+        // Increment the last invoice number
+        $newInvoiceNumber = 'INVS' . str_pad((int)filter_var($lastInvoiceNumber, FILTER_SANITIZE_NUMBER_INT) + 1, 4, '0', STR_PAD_LEFT);
+
+        return view('pos.sale.invoice.create', compact('suppliers', 'customers', 'detail', 'newInvoiceNumber'))->with('vendors', $vendors);
     }
 
     public function findCategory(Request $request)

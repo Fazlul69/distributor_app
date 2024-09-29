@@ -35,12 +35,12 @@ use App\Http\Controllers\settings\OutsideSettingsController;
 |
 */
 
-Route::get('/', [HeaderController::class, 'index'])->name('mainView');
+// Route::get('/', [HeaderController::class, 'index'])->name('mainView');
 // Route::get('/', function () {
 //     return view('welcome');
 // })->name('mainView');
 
-Route::get('login', [AuthController::class,'index'])->name('login');
+Route::get('/', [AuthController::class,'index'])->name('login');
 Route::post('login', [AuthController::class,'authenticate'])->name('login');
 Route::get('login', [AuthController::class,'index'])->name('loginFail');
 Route::get('logout', [AuthController::class,'logout'])->name('logout');

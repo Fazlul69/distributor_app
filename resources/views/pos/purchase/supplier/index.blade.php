@@ -1,12 +1,13 @@
 @extends('master')
 
 @section('content')
-   <div class="supplier">
+   <div class="supplier global">
        <div class="container">
             <div class="row">
-                <div class="col"><a href="{{route('supplier.view')}}"><h5>Supplies</h5></a></div>
                 <div class="col">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#supplierModal">+ Add Suppliers</button>
+                    <h2 class="mb-25"><a href="{{route('supplier.view')}}">Supplies</a> 
+                        <button type="button" class="btn btn-default btn-rounded print pull-right" data-bs-toggle="modal" data-bs-target="#supplierModal">+ Add Suppliers</button>
+                    </h2>
                 </div>
            </div>
            <div class="row">
@@ -141,30 +142,4 @@
 
    <!-- supplier modal end -->
 
- 
-   <style>
-       .supplier{
-           padding-top: 20px;
-       }
-       .card{
-           margin-top: 40px;
-       }
-       .btn-success{
-           /* margin-top: -45px; */
-           float: right;
-       }
-       .btn-success:focus {
-            border-color: #fff;
-            box-shadow: none;
-        }
-        .done {
-            margin-top: 10px;
-        }
-        .bi.bi-asterisk {
-            margin-left: 0px;
-            width: 7px;
-            color: #ea1717;
-            margin-top: -5px;
-        }
-   </style>
 @endsection

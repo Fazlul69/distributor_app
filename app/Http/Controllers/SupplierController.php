@@ -44,7 +44,7 @@ class SupplierController extends Controller
     {
         $this->validate($request,[
             'supplier_name' => 'required',
-            'supplier_mobile_no' => 'required',
+            'supplier_mobile_no' => 'nullable',
             'supplier_email' => 'nullable',
             'vendor_id' => 'required',
             'payed' => 'nullable',

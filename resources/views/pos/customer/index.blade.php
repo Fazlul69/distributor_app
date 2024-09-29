@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-   <div class="customer">
+   <div class="customer global">
        <div class="container">
             <div class="row">
                 <div class="col">
@@ -105,16 +105,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="cus_mobile" class="form-label">Mobile No</label>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"/>
-                                </svg>
                                 <input type="text" class="form-control" id="cus_mobile" name="cus_mobile" placeholder="Mobile No" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="shop" class="form-label">Shop Name</label>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"/>
-                                </svg>
                                 <input type="text" class="form-control" id="shop" name="shop" placeholder="Shop Name" required>
                             </div>
                             <div class="col-md-6">
@@ -123,9 +117,6 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="cus_address" class="form-label">Address</label>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"/>
-                                </svg>
                                 <input type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Address" required>
                             </div>
                             <div class="col-md-6">
@@ -146,71 +137,5 @@
     </div>
 
    <!-- customer modal end -->
-
-
-   <style>
-       .customer{
-           padding-top: 20px;
-       }
-       .card{
-           margin-top: 40px;
-       }
-       .btn-success{
-           /* margin-top: -45px; */
-           float: right;
-       }
-       .btn-success:focus {
-            border-color: #fff;
-            box-shadow: none;
-        }
-        h2 a,a:hover{
-            color: #455a64;
-        }
-        .form-control:focus {
-            box-shadow: none;
-        }
-        .pull-right {
-            float: right;
-            padding: 10px 18px !important;
-            background-color: #fff;
-            border: 2px solid #ddd !important;
-            color: #455a64 !important;
-            border-radius: 60px !important;
-        }
-        .mb-25 {
-            line-height: 36px;
-            font-size: 24px;
-            color: #444 !important;
-            font-weight: 600;
-            margin-top: 11px;
-        }
-        .btn.btn-default.btn-rounded.print.pull-right:hover {
-            background: #fafafa;
-            border: 2px solid #136acd !important;
-            color: #2568ef !important;
-        }
-        .done {
-            margin-top: 10px;
-        }
-        .bi.bi-asterisk {
-            margin-left: 0px;
-            width: 7px;
-            color: #ea1717;
-            margin-top: -5px;
-        }
-
-        /* pagination */
-        .w-5.h-5 {
-           width: 15px;
-        }
-        .relative.inline-flex.items-center.px-4.py-2.text-sm.font-medium.text-gray-700.bg-white.border.border-gray-300.leading-5.rounded-md.hover\:text-gray-500.focus\:outline-none.focus\:ring.ring-gray-300.focus\:border-blue-300.active\:bg-gray-100.active\:text-gray-700.transition.ease-in-out.duration-150,.relative.inline-flex.items-center.px-4.py-2.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.leading-5.rounded-md,.relative.inline-flex.items-center.px-4.py-2.ml-3.text-sm.font-medium.text-gray-700.bg-white.border.border-gray-300.leading-5.rounded-md.hover\:text-gray-500.focus\:outline-none.focus\:ring.ring-gray-300.focus\:border-blue-300.active\:bg-gray-100.active\:text-gray-700.transition.ease-in-out.duration-150 {
-            display: none !important;
-        }
-        .pagination {
-            margin-left: 27px;
-            margin-bottom: 10px;
-        }
-   </style>
-
 
 @endsection

@@ -36,6 +36,6 @@ class AuthController extends Controller
     {
       Auth::logout();
 
-      return redirect(route('mainView'));
+      return redirect(route('login'));
     }
 }

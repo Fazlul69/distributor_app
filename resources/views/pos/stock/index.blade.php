@@ -3,8 +3,10 @@
 @section('content')
     <div class="container stock">
         <div class="row">
-            <div class="col"><a href="{{route('stock.index')}}">Stock Items</a></div>
-            <div class="col"></div>
+                <div class="col">
+                    <h2 class="mb-25"><a href="{{route('stock.index')}}">Stock Items</a>
+                    </h2>
+                </div>
         </div>
         <div class="row">
             <div class="col"></div>
@@ -68,7 +70,7 @@
     </div>
 
     <style>
-        .stock{padding-top: 30px;}
+        /* .stock{padding-top: 30px;} */
         .des{
             box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.09) !important;
             border: 0px solid #eaedf2 !important;

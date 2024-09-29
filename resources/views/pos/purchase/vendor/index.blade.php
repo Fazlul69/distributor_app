@@ -4,9 +4,10 @@
    <div class="vendor">
        <div class="container">
             <div class="row">
-                <div class="col"><h4>Vendors</h4></div>
                 <div class="col">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#vendorModal">+ Add Vendor</button>
+                    <h2 class="mb-25"><a href="{{route('vendor.view')}}">Vendors</a> 
+                        <button type="button" class="btn btn-default btn-rounded print pull-right" data-bs-toggle="modal" data-bs-target="#vendorModal">+ Add Vendor</button>
+                    </h2>
                 </div>
            </div>
            <div class="">

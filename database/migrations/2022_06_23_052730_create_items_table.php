@@ -16,12 +16,12 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('vendor_id');
-            $table->bigInteger('category_id');
-            $table->String('product_name');
-            $table->double('dp');
-            $table->double('tp');
-            $table->double('discount_price');
-            $table->double('mrp');
+            $table->bigInteger('category_id')->nullable();
+            $table->String('product_name')->nullable();
+            $table->double('buy_price')->nullable();
+            $table->double('sell_price')->nullable();
+            $table->double('discount_price')->nullable();
+            $table->double('mrp')->nullable();
             $table->timestamps();
         });
     }

@@ -26,12 +26,11 @@
                                 </div>
                                 <div class="col">
                                     <label for="invoice" class="form-label">Invoice No</label>
-                                    <input type="text" class="form-control" id="invoice" name="invoice[]"  placeholder="101" required>
-                                    
+                                    <input type="text" class="form-control" id="invoice" name="invoice[]" value="{{ $newInvoiceNumber }}" readonly>
                                 </div>
                                 <div class="col">
                                     <label for="date" class="form-label">date</label>
-                                    <input type="date" class="form-control" id="date" name="date[]" placeholder="date">
+                                    <input type="date" class="form-control" id="date" name="date[]" value="{{ date('Y-m-d') }}">
                                 </div>
                             </div>
                             <div class="row">
@@ -42,13 +41,13 @@
                                     <label for="product_name" class="form-label">Item</label>
                                 </div>
                                 <div class="col">
-                                    <label for="company_price" class="form-label">DP</label>
+                                    <label for="company_price" class="form-label">Buy Price</label>
                                 </div>
                                 <div class="col">
                                     <label for="discount_price" class="form-label">Discount Price</label>
                                 </div>
                                 <div class="col">
-                                    <label for="sell_price" class="form-label">TP</label>
+                                    <label for="sell_price" class="form-label">Sell Price</label>
                                 </div>
                                 <div class="col">
                                     <label for="mrp" class="form-label">MRP</label>
@@ -76,26 +75,26 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control company_price" id="company_price" name="company_price[]" placeholder="DP">
+                                    <input type="text" class="form-control company_price" id="company_price" name="company_price[]" placeholder="Buy Price">
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control" id="discount_price" name="discount_price[]" placeholder="Discount">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control sell_price" id="sell_price" name="sell_price[]" placeholder="TP">
+                                    <input type="text" class="form-control sell_price" id="sell_price" name="sell_price[]" placeholder="Sell Price">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control mrp" id="mrp" name="mrp[]" placeholder="mrp">
+                                    <input type="text" class="form-control mrp" id="mrp" name="mrp[]" placeholder="MRP">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control quantity" id="quantity" name="quantity[]" onkeyup='calculfac()' placeholder="quantity" required>
+                                    <input type="text" class="form-control quantity" id="quantity" name="quantity[]" onkeyup='calculfac()' placeholder="Quantity" required>
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control subtotal sale_total" id="total" name="total[]"  onclick="getTotal()" placeholder="total">
                                 </div>
                                 <div class="col">
                                     <a href="javascript:void(0)" class="btn btn-danger deleteRow" style="font-size: 11px;">X</a>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                         <div class="row dow_row">
@@ -121,7 +120,7 @@
                                 </div>
                             </div>
                         <button type="submit" class="btn btn-success">Submit</button>
-                        <a href="javascript:void(0)" class="addRow" style="float:inline-end">+ Add new item</a>
+                        <a href="javascript:void(0)" class="addRow">+ Add new item</a>
                     </form>
                 </div>
             </div>

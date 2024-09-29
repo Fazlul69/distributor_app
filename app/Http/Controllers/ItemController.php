@@ -51,10 +51,10 @@ class ItemController extends Controller
             // Validate the value...
             $this->validate($request,[
                 'vendor_id' => 'required',
-                'category_id' => 'required',
+                'category_id' => 'nullable',
                 'product_name' => 'required',
-                'dp' => 'nullable',
-                'tp' => 'nullable',
+                'buy_price' => 'nullable',
+                'sell_price' => 'nullable',
                 'discount_price' => 'nullable',
                 'mrp' => 'nullable',
             ]);
@@ -114,18 +114,11 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'product_name' => 'required',
-            'dp' => 'nullable',
-            'tp' => 'nullable',   
-            'discount_price' => 'nullable',             
-            'mrp' => 'nullable',
-        ]);
         $items = Item::find($id);
         
         $items->product_name = $request->product_name;
-        $items->dp = $request->dp;
-        $items->tp = $request->tp;
+        $items->buy_price = $request->buy_price;
+        $items->sell_price = $request->sell_price;
         $items->discount_price = $request->discount_price;
         $items->mrp = $request->mrp;
 
