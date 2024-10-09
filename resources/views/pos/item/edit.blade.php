@@ -3,7 +3,7 @@
 @section('content')
     <div class="item-edit">
         <div class="container">
-            <a href="{{route('dashboard.view')}}">Dashboard</a> / <a href="{{route('item.view')}}">Item Edit</a>
+            <a href="{{route('item.view')}}"><- Back</a> / <a href="{{route('item.view')}}">Item Edit</a>
             <div class="row">
                 <div class="card">
                     <div class="card-body">
@@ -15,12 +15,12 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="dp" class="form-label">DP</label>
-                            <input type="text" class="form-control" id="dp" name="buy_price" value="{{$items->dp}}">
+                            <label for="dp" class="form-label">Buy Price</label>
+                            <input type="text" class="form-control" id="dp" name="buy_price" value="{{$items->buy_price}}">
                         </div>
                         <div class="col">
-                            <label for="tp" class="form-label">TP</label>
-                            <input type="text" class="form-control" id="tp" name="sell_price" value="{{$items->tp}}">
+                            <label for="tp" class="form-label">Sell Price</label>
+                            <input type="text" class="form-control" id="tp" name="sell_price" value="{{$items->sell_price}}">
                         </div>
                         <div class="col">
                             <label for="discount_price" class="form-label">Discount Price</label>

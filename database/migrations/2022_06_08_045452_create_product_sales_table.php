@@ -17,7 +17,8 @@ class CreateProductSalesTable extends Migration
             $table->increments('id');
             $table->String('invoice');
             $table->date('date')->nullable();
-            $table->bigInteger('customer_id');
+            $table->string('customer_name')->nullable();
+            $table->string('customer_mobile')->nullable();
             $table->integer('vendor_id')->unsigned();
             $table->String('product_id');
             $table->integer('quantity');

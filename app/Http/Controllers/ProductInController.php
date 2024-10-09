@@ -58,7 +58,9 @@ class ProductInController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $this->validate($request,[
+            'supplier_name' => 'required',
+        ]);
         foreach ($request->product_id as $key => $product_id) {
             $input = new ProductInput();
             $input->product_id = $product_id;
@@ -101,12 +103,12 @@ class ProductInController extends Controller
     }
     public function dealerPrice(Request $request)
     {
-        $data = Item::select('dp')->where('id', $request->id)->first();
+        $data = Item::select('buy_price')->where('id', $request->id)->first();
         return response()->json($data);
     }
     public function tradePrice(Request $request)
     {
-        $data = Item::select('tp')->where('id', $request->id)->first();
+        $data = Item::select('sell_price')->where('id', $request->id)->first();
         return response()->json($data);
     }
     public function discountPrice(Request $request)

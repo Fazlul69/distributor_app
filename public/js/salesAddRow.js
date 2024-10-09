@@ -1,32 +1,67 @@
-/*
- * ATTENTION: An "eval-source-map" devtool has been used.
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
-/******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/js/salesAddRow.js":
-/*!*************************************!*\
-  !*** ./resources/js/salesAddRow.js ***!
-  \*************************************/
-/***/ (() => {
+$('form').on('click', '.addRowforsale', function(){
+    $('input.purchase_quality').val('');
+    $('input.sales_quality').val('');
 
-eval("$('form').on('click', '.addRowforsale', function () {\n  $('input.purchase_quality').val('');\n  $('input.sales_quality').val('');\n  var $newRow = $('div.add:first').clone();\n  $newRow.find('select.productVendor').val('');\n  $newRow.find('select.productCategory').val('');\n  $newRow.find('select.productName').val('');\n  $newRow.find('input.p_stock').val('');\n  $newRow.find('input.p_price').val('');\n  $newRow.find('input.quantity').val('');\n  $newRow.find('input.sale_total').val('');\n  $newRow.find('input.purchase_quality').val('');\n  $newRow.find('input.sales_quality').val('');\n  $('.invoice_table').append($newRow);\n}); //note\n\n$('form').on('click', '.addNote', function () {\n  var $newNote = $('div.hgDqw:first').clone();\n  $newNote.find('select.bhFre').val('');\n  $newNote.find('input.sdLju').val('');\n  $('.gtYsd').append($newNote);\n}); //note upload\n\n$('form').on('click', '.notesubmit', function (e) {\n  e.preventDefault();\n  var vendor_id = $(\"select[name=vendor_id]\").val();\n  var customer_id = $(\"select[name=customer_id]\").val();\n  var invoice = $(\"input[name=note_invoice]\").val();\n  var payed = $(\"input[name=note_payed]\").val();\n  var due = $(\"input[name=note_due]\").val();\n\n  var _token = $('meta[name=\"csrf-token\"]').attr('content');\n\n  $.ajax({\n    type: 'post',\n    headers: {\n      'X-CSRF-TOKEN': $('meta[name=\"csrf-token\"]').attr('content')\n    },\n    url: '/notestore',\n    dataType: \"text\",\n    data: {\n      _token: _token,\n      vendor_id: vendor_id,\n      customer_id: customer_id,\n      invoice: invoice,\n      payed: payed,\n      due: due\n    },\n    success: function success(data) {\n      console.log(\"dd :\" + data);\n    }\n  });\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvc2FsZXNBZGRSb3cuanMuanMiLCJuYW1lcyI6WyIkIiwib24iLCJ2YWwiLCIkbmV3Um93IiwiY2xvbmUiLCJmaW5kIiwiYXBwZW5kIiwiJG5ld05vdGUiLCJlIiwicHJldmVudERlZmF1bHQiLCJ2ZW5kb3JfaWQiLCJjdXN0b21lcl9pZCIsImludm9pY2UiLCJwYXllZCIsImR1ZSIsIl90b2tlbiIsImF0dHIiLCJhamF4IiwidHlwZSIsImhlYWRlcnMiLCJ1cmwiLCJkYXRhVHlwZSIsImRhdGEiLCJzdWNjZXNzIiwiY29uc29sZSIsImxvZyJdLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL3NhbGVzQWRkUm93LmpzPzkwMzciXSwic291cmNlc0NvbnRlbnQiOlsiXG4kKCdmb3JtJykub24oJ2NsaWNrJywgJy5hZGRSb3dmb3JzYWxlJywgZnVuY3Rpb24oKXtcbiAgICAkKCdpbnB1dC5wdXJjaGFzZV9xdWFsaXR5JykudmFsKCcnKTtcbiAgICAkKCdpbnB1dC5zYWxlc19xdWFsaXR5JykudmFsKCcnKTtcblxuICAgIGxldCAkbmV3Um93ID0gJCgnZGl2LmFkZDpmaXJzdCcpLmNsb25lKCk7XG4gICAgXG4gICAgJG5ld1Jvdy5maW5kKCdzZWxlY3QucHJvZHVjdFZlbmRvcicpLnZhbCgnJyk7XG4gICAgJG5ld1Jvdy5maW5kKCdzZWxlY3QucHJvZHVjdENhdGVnb3J5JykudmFsKCcnKTtcbiAgICAkbmV3Um93LmZpbmQoJ3NlbGVjdC5wcm9kdWN0TmFtZScpLnZhbCgnJyk7XG4gICAgJG5ld1Jvdy5maW5kKCdpbnB1dC5wX3N0b2NrJykudmFsKCcnKTtcbiAgICAkbmV3Um93LmZpbmQoJ2lucHV0LnBfcHJpY2UnKS52YWwoJycpO1xuICAgICRuZXdSb3cuZmluZCgnaW5wdXQucXVhbnRpdHknKS52YWwoJycpO1xuICAgICRuZXdSb3cuZmluZCgnaW5wdXQuc2FsZV90b3RhbCcpLnZhbCgnJyk7XG5cbiAgICAkbmV3Um93LmZpbmQoJ2lucHV0LnB1cmNoYXNlX3F1YWxpdHknKS52YWwoJycpO1xuICAgICRuZXdSb3cuZmluZCgnaW5wdXQuc2FsZXNfcXVhbGl0eScpLnZhbCgnJyk7XG5cbiAgICBcbiAgICAkKCcuaW52b2ljZV90YWJsZScpLmFwcGVuZCgkbmV3Um93KTtcbn0pO1xuXG4vL25vdGVcblxuJCgnZm9ybScpLm9uKCdjbGljaycsICcuYWRkTm90ZScsIGZ1bmN0aW9uKCl7XG5cbiAgICBsZXQgJG5ld05vdGUgPSAkKCdkaXYuaGdEcXc6Zmlyc3QnKS5jbG9uZSgpO1xuICAgICRuZXdOb3RlLmZpbmQoJ3NlbGVjdC5iaEZyZScpLnZhbCgnJyk7XG4gICAgJG5ld05vdGUuZmluZCgnaW5wdXQuc2RManUnKS52YWwoJycpO1xuXG4gICAgXG4gICAgJCgnLmd0WXNkJykuYXBwZW5kKCRuZXdOb3RlKTtcbn0pO1xuXG4vL25vdGUgdXBsb2FkXG5cbiQoJ2Zvcm0nKS5vbignY2xpY2snLCAnLm5vdGVzdWJtaXQnLCBmdW5jdGlvbihlKXtcbiAgICBlLnByZXZlbnREZWZhdWx0KCk7XG5cbiAgICBsZXQgdmVuZG9yX2lkID0gJChcInNlbGVjdFtuYW1lPXZlbmRvcl9pZF1cIikudmFsKCk7XG4gICAgbGV0IGN1c3RvbWVyX2lkID0gJChcInNlbGVjdFtuYW1lPWN1c3RvbWVyX2lkXVwiKS52YWwoKTtcbiAgICBsZXQgaW52b2ljZSA9ICQoXCJpbnB1dFtuYW1lPW5vdGVfaW52b2ljZV1cIikudmFsKCk7XG4gICAgbGV0IHBheWVkID0gJChcImlucHV0W25hbWU9bm90ZV9wYXllZF1cIikudmFsKCk7XG4gICAgbGV0IGR1ZSA9ICQoXCJpbnB1dFtuYW1lPW5vdGVfZHVlXVwiKS52YWwoKTtcbiAgICBsZXQgX3Rva2VuICAgPSAkKCdtZXRhW25hbWU9XCJjc3JmLXRva2VuXCJdJykuYXR0cignY29udGVudCcpO1xuXG4gICAgJC5hamF4KHtcbiAgICAgICAgdHlwZToncG9zdCcsXG4gICAgICAgIGhlYWRlcnM6IHtcbiAgICAgICAgICAgICdYLUNTUkYtVE9LRU4nOiAkKCdtZXRhW25hbWU9XCJjc3JmLXRva2VuXCJdJykuYXR0cignY29udGVudCcpXG4gICAgICAgICAgICB9LFxuICAgICAgICB1cmw6ICcvbm90ZXN0b3JlJyxcbiAgICAgICAgZGF0YVR5cGU6IFwidGV4dFwiLFxuICAgICAgICBkYXRhOntcbiAgICAgICAgICAgIF90b2tlbjpfdG9rZW4sXG4gICAgICAgICAgICB2ZW5kb3JfaWQ6dmVuZG9yX2lkLFxuICAgICAgICAgICAgY3VzdG9tZXJfaWQ6Y3VzdG9tZXJfaWQsXG4gICAgICAgICAgICBpbnZvaWNlOmludm9pY2UsXG4gICAgICAgICAgICBwYXllZDpwYXllZCxcbiAgICAgICAgICAgIGR1ZTpkdWVcbiAgICAgICAgfSxcbiAgICAgICAgc3VjY2VzczogZnVuY3Rpb24oZGF0YSl7XG4gICAgICAgICAgY29uc29sZS5sb2coXCJkZCA6XCIrIGRhdGEpO1xuICAgICAgICB9LFxuXG4gICAgICB9KTtcbn0pOyJdLCJtYXBwaW5ncyI6IkFBQ0FBLENBQUMsQ0FBQyxNQUFELENBQUQsQ0FBVUMsRUFBVixDQUFhLE9BQWIsRUFBc0IsZ0JBQXRCLEVBQXdDLFlBQVU7RUFDOUNELENBQUMsQ0FBQyx3QkFBRCxDQUFELENBQTRCRSxHQUE1QixDQUFnQyxFQUFoQztFQUNBRixDQUFDLENBQUMscUJBQUQsQ0FBRCxDQUF5QkUsR0FBekIsQ0FBNkIsRUFBN0I7RUFFQSxJQUFJQyxPQUFPLEdBQUdILENBQUMsQ0FBQyxlQUFELENBQUQsQ0FBbUJJLEtBQW5CLEVBQWQ7RUFFQUQsT0FBTyxDQUFDRSxJQUFSLENBQWEsc0JBQWIsRUFBcUNILEdBQXJDLENBQXlDLEVBQXpDO0VBQ0FDLE9BQU8sQ0FBQ0UsSUFBUixDQUFhLHdCQUFiLEVBQXVDSCxHQUF2QyxDQUEyQyxFQUEzQztFQUNBQyxPQUFPLENBQUNFLElBQVIsQ0FBYSxvQkFBYixFQUFtQ0gsR0FBbkMsQ0FBdUMsRUFBdkM7RUFD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\n//# sourceURL=webpack-internal:///./resources/js/salesAddRow.js\n");
+    let $newRow = $('div.add:first').clone();
+    
+    $newRow.find('select.productVendor').val('');
+    $newRow.find('select.productCategory').val('');
+    $newRow.find('select.productName').val('');
+    $newRow.find('input.p_stock').val('');
+    $newRow.find('input.p_price').val('');
+    $newRow.find('input.quantity').val('');
+    $newRow.find('input.sale_total').val('');
 
-/***/ })
+    $newRow.find('input.purchase_quality').val('');
+    $newRow.find('input.sales_quality').val('');
 
-/******/ 	});
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./resources/js/salesAddRow.js"]();
-/******/ 	
-/******/ })()
-;
+    
+    $('.invoice_table').append($newRow);
+});
+
+//note
+
+$('form').on('click', '.addNote', function(){
+
+    let $newNote = $('div.hgDqw:first').clone();
+    $newNote.find('select.bhFre').val('');
+    $newNote.find('input.sdLju').val('');
+
+    
+    $('.gtYsd').append($newNote);
+});
+
+//note upload
+
+$('form').on('click', '.notesubmit', function(e){
+    e.preventDefault();
+
+    let vendor_id = $("select[name=vendor_id]").val();
+    let customer_id = $("select[name=customer_id]").val();
+    let invoice = $("input[name=note_invoice]").val();
+    let payed = $("input[name=note_payed]").val();
+    let due = $("input[name=note_due]").val();
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajax({
+        type:'post',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        url: '/notestore',
+        dataType: "text",
+        data:{
+            _token:_token,
+            vendor_id:vendor_id,
+            customer_id:customer_id,
+            invoice:invoice,
+            payed:payed,
+            due:due
+        },
+        success: function(data){
+          console.log("dd :"+ data);
+        },
+
+      });
+});

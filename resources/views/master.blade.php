@@ -157,12 +157,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<script src="{{mix('js/app.js')}}"></script>
-<script src="{{mix('js/purcahseAddRow.js') }}"></script> 
-<script src="{{mix('js/salesAddRow.js')}}"></script>
-<script src="{{mix('js/purchaseDropdown.js')}}"></script>
-<script src="{{mix('js/saledropdown.js')}}"></script>
-<script src="{{mix('js/print.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/purcahseAddRow.js') }}"></script> 
+<script src="{{asset('js/salesAddRow.js')}}"></script>
+<script src="{{asset('js/purchaseDropdown.js')}}"></script>
+<script src="{{asset('js/saledropdown.js')}}"></script>
+<script src="{{asset('js/print.js')}}"></script>
 <script src="{{asset('js/subtotal.js')}}"></script>
 <script src="{{asset('js/damage.js')}}"></script>
 <script src="{{asset('js/product.js')}}"></script>

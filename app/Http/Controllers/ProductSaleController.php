@@ -76,13 +76,18 @@ class ProductSaleController extends Controller
     }
     public function sellPrice(Request $request)
     {
-        $s_price=Item::select('tp')->where('id',$request->id)->first();
+        $s_price=Item::select('sell_price')->where('id',$request->id)->first();
 		
     	return response()->json($s_price);
     }
    
     public function store(Request $request)
     {
+        $csutomer = new Customer();
+        $csutomer->customer_name = $request->customer_name;
+        $csutomer->cus_mobile = $request->customer_mobile;
+        $csutomer->save();
+
         // dd($request->all());
         foreach($request->vendor_id as $key => $vendor_id)
         {
@@ -90,7 +95,8 @@ class ProductSaleController extends Controller
             $input->vendor_id = $vendor_id;
             $input->invoice = $request->invoice[0];
             $input->date = $request->date[0];
-            $input->customer_id = $request->customer_id[0];
+            $input->customer_name = $request->customer_name;
+            $input->customer_mobile = $request->customer_mobile;
             $input->product_id = $request->product_name[$key]; 
             $input->quantity = $request->quantity[$key];
             $input->total = $request->total[$key];
@@ -242,6 +248,9 @@ class ProductSaleController extends Controller
 
     public function destroy($id)
     {
+        $productsales = ProductSale::find($id);
+        $productsales->delete();
+        
         return redirect(route('sales.index'));
     }
 

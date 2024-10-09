@@ -105,11 +105,11 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="cus_mobile" class="form-label">Mobile No</label>
-                                <input type="text" class="form-control" id="cus_mobile" name="cus_mobile" placeholder="Mobile No" required>
+                                <input type="text" class="form-control" id="cus_mobile" name="cus_mobile" placeholder="Mobile No">
                             </div>
                             <div class="col-md-6">
                                 <label for="shop" class="form-label">Shop Name</label>
-                                <input type="text" class="form-control" id="shop" name="shop" placeholder="Shop Name" required>
+                                <input type="text" class="form-control" id="shop" name="shop" placeholder="Shop Name">
                             </div>
                             <div class="col-md-6">
                                 <label for="cus_email" class="form-label">Email</label>
@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="cus_address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Address" required>
+                                <input type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Address">
                             </div>
                             <div class="col-md-6">
                                 <label for="payed" class="form-label">Payed</label>

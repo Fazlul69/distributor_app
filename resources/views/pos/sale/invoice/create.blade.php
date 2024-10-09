@@ -13,12 +13,11 @@
                             <div class="row section_one">
                                 <div class="col">
                                     <label for="bill" class="form-label">Bill to</label>
-                                    <select class="form-control single" name="customer_id[]">
-                                            <option value="">Select a Customer</option>
-                                                @foreach($customers as $customer)
-                                                    <option value="{{$customer->id}}">{{$customer->shop}}</option>
-                                                @endforeach
-                                        </select>
+                                    <input type="text" class="form-control" name="customer_name" placeholder="Customer Name">
+                                </div>
+                                <div class="col">
+                                    <label for="bill" class="form-label">Customer Mobile No.</label>
+                                    <input type="text" class="form-control" name="customer_mobile" placeholder="Customer Mobile">
                                 </div>
                                 <div class="col">
                                     <label for="invoice" class="form-label">Invoice No</label>

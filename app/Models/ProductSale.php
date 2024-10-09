@@ -12,7 +12,8 @@ class ProductSale extends Model
     protected $fillable = [
         'invoice',
         'date',
-        'customer_id',
+        'customer_name',
+        'customer_mobile',
         'vendor_id',
         'product_id',
         'quantity',
@@ -23,9 +24,9 @@ class ProductSale extends Model
         'due'
     ];
 
-    function customer(){
-        return $this->belongsTo(Customer::class, 'customer_id');
-    }
+    // function customer(){
+    //     return $this->belongsTo(Customer::class, 'customer_id');
+    // }
     function item(){
         return $this->belongsTo(Item::class, 'product_id');
     }

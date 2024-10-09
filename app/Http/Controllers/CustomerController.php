@@ -50,10 +50,10 @@ class CustomerController extends Controller
     {
         $this->validate($request,[
             'customer_name' => 'required',
-            'cus_mobile' => 'required',
-            'shop' => 'required',
+            'cus_mobile' => 'nullable',
+            'shop' => 'nullable',
             'cus_email' => 'nullable',
-            'cus_address' => 'required',
+            'cus_address' => 'nullable',
             'payed' => 'nullable',
             'due' => 'nullable',
         ],

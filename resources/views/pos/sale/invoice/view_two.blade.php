@@ -18,7 +18,7 @@
                         </svg>Print</a>
                 </div>
             </div>
-            <div class="print_invoice card dfd">
+            {{-- <div class="print_invoice card dfd">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- invoice part -->
             <div class="print_invoice card printTables" id="printTable">
                 <div class="card-body">
@@ -100,19 +100,20 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Shop Name</th>
-                                        <th>Name</th>
+                                        <th>Customer Name</th>
+                                        <th>Mobile No.</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                     @foreach($productsales->unique('invoice') as $pro)
-                                    <td>{{$pro->customer->shop}}</td>
-                                    <td>{{$pro->customer->customer_name}}</td>
+                                    {{-- <td>{{$pro->customer->shop}}</td> --}}
+                                    <td>{{$pro->customer_name}}</td>
+                                    <td>{{$pro->customer_mobile}}</td>
                                     @endforeach
                                     </tr>
                                 </tbody>
-                                <thead>
+                                {{-- <thead>
                                     <tr>
                                         <th>Address</th>
                                         <th>Mobile No.</th>
@@ -125,7 +126,7 @@
                                     <td>{{$pro->customer->cus_mobile}}</td>
                                     @endforeach
                                     </tr>
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                     </div>
@@ -195,7 +196,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row history_part">
+                    {{-- <div class="row history_part">
                         <div class="col">
                             <table class="table table-bordered queryTable">
                                 <thead>
@@ -211,7 +212,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- <div class="row">
                         <div class="col"></div>
                         <div class="col"></div>
@@ -242,29 +243,30 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    @foreach($productsales->unique('invoice') as $pro)
-                                    <p>Shop Name: {{$pro->customer->shop}}</p>
-                                    <p>Address: {{$pro->customer->cus_address}}</p>
-                                    @endforeach
+                                <div class="col-md-4">
+                                    {{-- @foreach($productsales->unique('invoice') as $pro) --}}
+                                    {{-- <p>Shop Name: {{$pro->customer->shop}}</p> --}}
+                                    {{-- <p>Address: {{$pro->customer->cus_address}}</p> --}}
+                                    {{-- @endforeach --}}
                                 </div>
-                                <div class="col-md-6 dShyt">
+                                <div class="col-md-4" style="text-align: center">
                                     @foreach($productsales->unique('invoice') as $pro)
                                     <p>Invoice No: {{$pro->invoice}}</p>
                                     @endforeach
                                 </div>
+                                <div class="col-md-4"></div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col">
                                     <p class="saLio">Replace Delivery: </p>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-md-4">
                                     <p class="swU text-center">Customer/Receiver Sign</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <p class="swU text-center">DM Sign</p>
+                                    {{-- <p class="swU text-center">DM Sign</p> --}}
                                 </div>
                                 <div class="col-md-4">
                                     <p class="swU text-center">Authorized Sign</p>
@@ -399,6 +401,7 @@
                 padding: 0;
                 border-top: 1px solid #000 !important;
             }
+           
             
         }
         

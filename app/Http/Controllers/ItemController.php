@@ -44,11 +44,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        
-
         try {
-            // Validate the value...
             $this->validate($request,[
                 'vendor_id' => 'required',
                 'category_id' => 'nullable',

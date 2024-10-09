@@ -21,8 +21,8 @@
                                         </select>
                                 </div>
                                 <div class="col">
-                                    <label for="bill" class="form-label">Bill to</label>
-                                    <input type="text" class="form-control" name="supplier_name[]" placeholder="Company Name">
+                                    <label for="bill" class="form-label">Bill Created By</label>
+                                    <input type="text" class="form-control" name="supplier_name[]" placeholder="Name" required>
                                 </div>
                                 <div class="col">
                                     <label for="invoice" class="form-label">Invoice No</label>

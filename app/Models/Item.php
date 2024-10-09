@@ -13,8 +13,8 @@ class Item extends Model
         'vendor_id', 
         'category_id',
         'product_name',
-        'dp',
-        'tp',
+        'buy_price',
+        'sell_price',
         'discount_price',
         'mrp'
     ];

@@ -15,7 +15,7 @@ class CreateProductInputsTable extends Migration
     {
         Schema::create('product_inputs', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('invoice');
+            $table->string('invoice');
             $table->string('supplier_name');
             $table->bigInteger('product_id');
             $table->bigInteger('category_id')->nullable();

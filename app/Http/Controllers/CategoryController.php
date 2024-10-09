@@ -6,6 +6,9 @@ use App\Models\Detail;
 use App\Models\Vendor;
 use App\Models\Company;
 use App\Models\Category;
+use App\Models\Item;
+use App\Models\ProductInput;
+use App\Models\ProductSale;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -104,6 +107,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        Item::whereIn('category_id', $id)->delete();
+        ProductInput::whereIn('category_id', $id)->delete();
+        ProductSale::whereIn('category_id', $id)->delete();
         Category::find($id)->delete();
         return redirect()->back();
     }

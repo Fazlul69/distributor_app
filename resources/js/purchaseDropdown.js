@@ -64,8 +64,8 @@ $(document).ready(function(){
         data:{'id':pro_id},
         dataType:'json',
         success: function(data){
-          console.log("dp :"+data.dp);
-          a.find('.company_price').val(data.dp)
+          console.log("dp :"+data);
+          a.find('.company_price').val(data.buy_price)
         },
 
       });
@@ -102,7 +102,7 @@ $(document).ready(function(){
         data:{'id':pro_id},
         dataType:'json',
         success: function(data){
-          a.find('#sell_price').val(data.tp)
+          a.find('#sell_price').val(data.sell_price)
         },
 
       });

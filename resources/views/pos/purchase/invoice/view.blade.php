@@ -214,7 +214,7 @@
             /* .table_area, .pre_head_tr{
                 border-bottom: 2px solid #000;
             } */
-            .dfd, .my-5 { display:none;}
+            .dfd, .my-5, .main-footer { display:none;}
         }
     </style>
 @endsection

@@ -46,10 +46,10 @@
                             <th scope="col">Invoice No</th>
                             <th scope="col">Customer</th>
                             <th scope="col">Total(Tk)</th>
-                            <th scope="col">Due(Tk)</th>
+                            {{-- <th scope="col">Due(Tk)</th>
                             <th scope="col">Replace(Tk)</th>
-                            <th scope="col">Collection(Tk)</th>
-                            <th>Status</th>
+                            <th scope="col">Collection(Tk)</th> --}}
+                            {{-- <th>Status</th> --}}
                             <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -59,9 +59,9 @@
                             <tr>
                                 <td>{{date('d-M-y', strtotime($productsale->date))}}</td>
                                 <td>{{$productsale->invoice}}</td>
-                                <td>{{$productsale->customer->customer_name}}</td>
+                                <td>{{$productsale->customer_name}}</td>
                                 <td>{{$productsale->grand_total}}</td>
-                                <td>{{$productsale->due}}</td>
+                                {{-- <td>{{$productsale->due}}</td>
                                 @php
                                     $rep_two = $replaces->where('invoice', $productsale->invoice)->sum('amount');
                                     $collection_two = $collections->where('sales_invoice', $productsale->invoice)->sum('amount');
@@ -76,7 +76,7 @@
                                 <td>paid</td>
                                 @else
                                 <td>due</td>
-                                @endif
+                                @endif --}}
                                 <td>
                                     <a class="svgimg" href="{{route('sales.edit',$productsale->id)}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
